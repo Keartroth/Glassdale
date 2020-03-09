@@ -1,6 +1,4 @@
-import { criminalList } from "./CriminalList.js";
-
-export let criminals = []
+export let criminals = [];
 
 export const useCriminals = () => {
     return criminals.slice();
