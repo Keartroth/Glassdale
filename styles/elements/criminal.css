@@ -1,0 +1,17 @@
+.criminal {
+    border: 1px solid black;
+    height: auto;
+    text-transform: capitalize;
+    width: 220px;
+}
+
+.criminal p {
+    margin: 1.5px;
+}
+
+.criminalsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
