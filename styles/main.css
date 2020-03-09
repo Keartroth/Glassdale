@@ -1,0 +1,7 @@
+/* @CSS Imports */
+@import './elements/criminal.css';
+
+/* General Styling */
+.bold {
+    font-weight: bold;
+}
