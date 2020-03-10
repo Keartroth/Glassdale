@@ -1,35 +1,23 @@
 import { useCriminals } from "./CriminalProvider.js";
 import { criminal } from "./Criminal.js";
 
-// const targetContentElement = document.querySelector(".criminalsContainer");
-
-// export const criminalList = () => {
-//     const arrayOfCriminalObjects = useCriminals();
-
-//     for (const criminalObject of arrayOfCriminalObjects) {
-//         targetContentElement.innerHTML += criminal(criminalObject);
-//     }
-// }
-
 const targetContentElement = document.querySelector(".criminalsContainer");
 const eventHub = document.querySelector(".container");
 
 // Listen for the custom event you dispatched in ConvictionSelect
-eventHub.addEventListener('changeConvictionEvent', event => {
+eventHub.addEventListener("changeConviction", event => {
     // You remembered to add the id of the crime to the event detail, right?
-    if ("crimeId" in event.detail) {
+    if ("crime" in event.detail) {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
-        const matchingCriminals = appStateCriminals.filter(currentCriminals => {
-            return currentCriminals.id = true;
-        })
-
+        const appStateCriminals = useCriminals();
+        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.conviction === event.detail.crime)
         /*
         Then invoke render() and pass the filtered collection as
         an argument
          */
-       render(matchingCriminals);
+       filterRender(matchingCriminals);
     }
 })
 
@@ -37,6 +25,12 @@ const render = criminalCollection => {
     targetContentElement.innerHTML += criminal(criminalCollection);
 }
 
+const filterRender = (filteredArray) => {
+    targetContentElement.innerHTML = "";
+    for (const arrayObject of filteredArray) {
+        render(arrayObject);
+    }
+}
 
 // Render ALL criminals initally
 export const criminalList = () => {
