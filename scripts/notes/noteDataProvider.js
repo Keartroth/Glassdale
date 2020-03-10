@@ -6,6 +6,8 @@ const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(noteStateChangedEvent)
 }
 
+const notes = [];
+
 const getNotes = () => {
     fetch('http://localhost:8088/notes')
         .then(response => response.json())

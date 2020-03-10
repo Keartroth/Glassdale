@@ -21,8 +21,16 @@ eventHub.addEventListener("changeConviction", event => {
     }
 })
 
-const render = criminalCollection => {
-    targetContentElement.innerHTML += criminal(criminalCollection);
+// Listen for the OTHER custom event you dispatched in ConvictionSelect
+eventHub.addEventListener("crimeWasChosen", event => {
+    // You remembered to add the id of the crime to the event detail, right?
+    if (event.detail.crime === "0") {
+        criminalList();
+    }
+})
+
+const render = criminalObject => {
+    targetContentElement.innerHTML += criminal(criminalObject);
 }
 
 const filterRender = (filteredArray) => {
