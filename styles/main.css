@@ -1,6 +1,7 @@
 /* @CSS Imports */
 @import './elements/criminal.css';
 @import './elements/convictions.css';
+@import './elements/note.css';
 
 /* General Styling */
 .bold {
