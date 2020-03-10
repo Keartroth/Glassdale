@@ -1,0 +1,23 @@
+#noteForm {
+    background-color: aliceblue;
+    border: 2px solid black;
+    font-family: monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    justify-content: space-around;
+    margin: 25px 5px;
+    padding: 20px;
+}
+
+#note--text {
+    display: block;
+    height: 100px;
+    margin: auto;
+    width: 90%;
+}
+
+#saveNote {
+    display: block;
+    margin: auto;
+    padding: 1.25em;
+}

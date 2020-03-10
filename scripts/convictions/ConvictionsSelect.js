@@ -18,14 +18,23 @@ contentTargetElement.addEventListener(
     "change", 
     event => {
     // Only do this if the `crimeSelect` element was changed
-    if (event.target.value !== 0) {
+    if (event.target.value !== "0") {
         // Create custom event. Provide an appropriate name.
         let chosenCrime = event.target.value;
         let changeConvictionEvent = new CustomEvent("changeConviction", {
             detail: {
                 crime: chosenCrime
             }
-        });
+        })
+        // Dispatch to event hub
+        eventHub.dispatchEvent(changeConvictionEvent);
+    } else if (event.target.value === "0") {
+        let chosenCrime = event.target.value;
+        let changeConvictionEvent = new CustomEvent("crimeWasChosen", {
+            detail: {
+                crime: chosenCrime
+            }
+        })
         // Dispatch to event hub
         eventHub.dispatchEvent(changeConvictionEvent);
     }
