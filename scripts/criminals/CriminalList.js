@@ -21,7 +21,7 @@ eventHub.addEventListener("changeConviction", event => {
     }
 })
 
-// Listen for the OTHER custom event you dispatched in ConvictionSelect
+// Listen for the refresh crime list custom event you dispatched in ConvictionSelect
 eventHub.addEventListener("crimeWasChosen", event => {
     // You remembered to add the id of the crime to the event detail, right?
     if (event.detail.crime === "0") {

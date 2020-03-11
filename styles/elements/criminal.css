@@ -5,6 +5,11 @@
     width: 220px;
 }
 
+.criminal button {
+    display: block;
+    margin: auto;
+}
+
 .criminal p {
     margin: 1.5px;
 }
