@@ -11,7 +11,7 @@ const render = witnessObject => {
 }
 
 // Remove all criminals and runs the function render to render all witnesses elements
-// to the article element (.listContainer) when the button element (#BUTTONIDHERE) is "clicked".
+// to the article element (.listContainer) when the button element (#button--witnessList) is "clicked".
 export const witnessList = () => {
     targetListContainerContentElement.innerHTML = "";
     const arrayOfWitnessObjects = useWitnesses();
@@ -20,8 +20,9 @@ export const witnessList = () => {
     }
 }
 
+// Inserts a button, Witness Statements, onto the DOM in the header element (.headerContainer).
 export const witnessListButton = () => {
-    targetHeaderContentElement.innerHTML =`
+    targetHeaderContentElement.innerHTML +=`
     <button id="button--witnessList">Witness Statements</button>
     `
 }
@@ -32,7 +33,7 @@ eventHub.addEventListener(
     "click", 
     event => {
     if (event.target.id === ("button--witnessList")) {
-        const witnessListGenerateEvent = new Event("witnessListGenerate");
+        const witnessListGenerateEvent = new CustomEvent("witnessListGenerate");
         eventHub.dispatchEvent(witnessListGenerateEvent);
     }
 })

@@ -5,7 +5,7 @@ export const useWitnesses = () => {
 }
 
 export const getWitnesses = () => {
-    return fetch("http://criminals.glassdale.us/witnesses")
+    return fetch("https://criminals.glassdale.us/witnesses")
         .then(response => response.json())
         .then(
             parsedWitnesses => {
