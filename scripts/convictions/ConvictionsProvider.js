@@ -1,4 +1,4 @@
-export let convictions = [];
+let convictions = [];
 
 export const useConvictions = () => {
     return convictions.slice();

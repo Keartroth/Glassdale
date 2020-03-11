@@ -1,7 +1,15 @@
-/* CSS file for the criminal card elements (.criminal) in article (.criminalsContainer) */
+/* CSS file for the criminal card elements (.criminal) in article (.listContainer) */
+#button--criminalList {
+    font-family: monospace;
+    margin: auto;
+    padding: 1em;
+}
+
 .criminal {
+    background-color: rgb(221, 221, 221);
     border: 1px solid black;
     height: auto;
+    min-width: 225px;
     text-transform: capitalize;
     width: 220px;
 }
@@ -15,7 +23,7 @@
     margin: 1.5px;
 }
 
-.criminalsContainer {
+.listContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
