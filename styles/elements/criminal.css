@@ -1,4 +1,4 @@
-/* CSS file for the criminal card elements (.criminal) in article (.criminalsContainer) */
+/* CSS file for the criminal card elements (.criminal) in article (.listContainer) */
 .criminal {
     border: 1px solid black;
     height: auto;
@@ -15,7 +15,7 @@
     margin: 1.5px;
 }
 
-.criminalsContainer {
+.listContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

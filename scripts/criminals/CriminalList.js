@@ -2,7 +2,7 @@ import { useCriminals } from "./CriminalProvider.js";
 import { criminal } from "./Criminal.js";
 import { dialogElement } from "./dialog.js";
 
-const targetContentElement = document.querySelector(".criminalsContainer");
+const targetContentElement = document.querySelector(".listContainer");
 const eventHub = document.querySelector(".container");
 
 // Listens for the custom event dispatched in ConvictionSelect
@@ -38,6 +38,7 @@ const filterRender = (filteredArray) => {
 
 // Render ALL criminals and dialog elements initally.
 export const criminalList = () => {
+    targetContentElement.innerHTML = "";
     const appStateCriminals = useCriminals();
     for (const criminalObject of appStateCriminals) {
         render(criminalObject);

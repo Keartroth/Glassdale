@@ -13,22 +13,24 @@ const contentTargetElement = document.querySelector(".filters__crime");
 contentTargetElement.addEventListener(
     "change", 
     event => {
-    if (event.target.value !== "0") {
-        let chosenCrime = event.target.value;
-        let changeConvictionEvent = new CustomEvent("changeConviction", {
-            detail: {
-                crime: chosenCrime
-            }
-        })
-        eventHub.dispatchEvent(changeConvictionEvent);
-    } else if (event.target.value === "0") {
-        let chosenCrime = event.target.value;
-        let changeConvictionEvent = new CustomEvent("crimeWasChosen", {
-            detail: {
-                crime: chosenCrime
-            }
-        })
-        eventHub.dispatchEvent(changeConvictionEvent);
+    if (event.target.id === "crimeSelect") {
+        if (event.target.value !== "0") {
+            let chosenCrime = event.target.value;
+            let changeConvictionEvent = new CustomEvent("changeConviction", {
+                detail: {
+                    crime: chosenCrime
+                }
+            })
+            eventHub.dispatchEvent(changeConvictionEvent);
+        } else if (event.target.value === "0") {
+            let chosenCrime = event.target.value;
+            let changeConvictionEvent = new CustomEvent("crimeWasChosen", {
+                detail: {
+                    crime: chosenCrime
+                }
+            })
+            eventHub.dispatchEvent(changeConvictionEvent);
+        }
     }
 })
 
