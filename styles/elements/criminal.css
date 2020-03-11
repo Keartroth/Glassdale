@@ -1,8 +1,14 @@
+/* CSS file for the criminal card elements (.criminal) in article (.criminalsContainer) */
 .criminal {
     border: 1px solid black;
     height: auto;
     text-transform: capitalize;
     width: 220px;
+}
+
+.criminal button {
+    display: block;
+    margin: auto;
 }
 
 .criminal p {
