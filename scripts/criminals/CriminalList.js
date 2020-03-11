@@ -4,12 +4,11 @@ import { dialogElement } from "./dialog.js";
 
 const targetHeaderContentElement = document.querySelector(".headerContainer");
 const targetContentElement = document.querySelector(".listContainer");
-const contentTargetElement = document.querySelector(".filters__crime");
 const eventHub = document.querySelector(".container");
 
 // Listens for the custom event dispatched in ConvictionSelect
 // to filter initial criminal list with the filterRender function.
-contentTargetElement.addEventListener("changeConviction", event => {
+eventHub.addEventListener("changeConviction", event => {
     if ("crime" in event.detail) {
         const appStateCriminals = useCriminals();
         const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.conviction === event.detail.crime)
@@ -18,7 +17,7 @@ contentTargetElement.addEventListener("changeConviction", event => {
 })
 
 // Listen for the refresh crime list custom event you dispatched in ConvictionSelect.
-contentTargetElement.addEventListener("crimeWasChosen", event => {
+eventHub.addEventListener("crimeWasChosen", event => {
     if (event.detail.crime === "0") {
         criminalList();
     }

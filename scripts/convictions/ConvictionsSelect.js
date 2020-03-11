@@ -8,6 +8,27 @@
 const eventHub = document.querySelector(".container");
 const contentTargetElement = document.querySelector(".filters__crime");
 
+// Provides the HTML structure for a list of options
+// in the dropdown menue element (#crimeSelect) for ConvictionSelect.
+const render = convictionsCollection => {
+    contentTargetElement.innerHTML = `
+        <select class="dropdown" id="crimeSelect">
+            <option value="0">Please select a crime...</option>
+            ${
+                convictionsCollection.map(crime => {
+                       return `<option id="crimeId--${crime.name}" value="${crime.name}" class="crimesMenueItem">${crime.name}</option>`
+                   })
+               }
+        </select>
+    `;
+}
+
+// Renders a list of options in the dropdown menue element (#crimeSelect).
+export const ConvictionSelect = () => {
+    const convictions = useConvictions();
+    render(convictions);
+}
+
 // Dispatches a custom event, either changeConviction or crimeWasChosen,
 // depending on the value the element (#crimeSelect) was changed to.
 contentTargetElement.addEventListener(
@@ -35,24 +56,3 @@ contentTargetElement.addEventListener(
         }
     }
 })
-
-// Provides the HTML structure for a list of options
-// in the dropdown menue element (#crimeSelect) for ConvictionSelect.
-const render = convictionsCollection => {
-    contentTargetElement.innerHTML = `
-        <select class="dropdown" id="crimeSelect">
-            <option value="0">Please select a crime...</option>
-            ${
-                convictionsCollection.map(crime => {
-                       return `<option id="crimeId--${crime.name}" value="${crime.name}" class="crimesMenueItem">${crime.name}</option>`
-                   })
-               }
-        </select>
-    `;
-}
-
-// Renders a list of options in the dropdown menue element (#crimeSelect).
-export const ConvictionSelect = () => {
-    const convictions = useConvictions();
-    render(convictions);
-}

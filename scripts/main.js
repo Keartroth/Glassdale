@@ -8,5 +8,5 @@ import { getWitnesses } from "./witnesses/witnessDataProvider.js";
 
 NoteForm();
 getConvictions().then(ConvictionSelect);
-// getWitnesses().then(witnessListButton);
+getWitnesses().then(witnessListButton);
 getCriminals().then(criminalList);
