@@ -1,5 +1,6 @@
 const eventHub = document.querySelector(".container");
 
+// Renders the dialog elements to the DOM for each specific criminal when being called in a for/of loop.
 export const dialogElement = (criminalObject) => {
     let contentTargetElement = document.querySelector(`#criminal__information--${criminalObject.id}`);
     contentTargetElement.innerHTML +=`
@@ -8,7 +9,7 @@ export const dialogElement = (criminalObject) => {
             ${
             criminalObject.known_associates.map(criminal => {
                 return `<li>Associate: ${criminal.name} | Alibi: ${criminal.alibi}</li>`
-                })
+                }).join("")
             }
             </ul>
             <button class="button--close" id="close-${criminalObject.id}">Close</button>
@@ -16,40 +17,48 @@ export const dialogElement = (criminalObject) => {
         `
 }
 
-// On the content target, listen for a "change" event.
+// Listens for a "click" event and dispatches the custom event, dialogButtonDetailEvent,
+// to the eventHub to open a corresponding dialog box.
 eventHub.addEventListener(
     "click", 
     event => {
-    // Only do this if the `crimeSelect` element was changed
     if (event.target.id.startsWith("associates--")) {
-        // Create custom event. Provide an appropriate name.
         const [prefix, chosenCriminal] = event.target.id.split("--");
-        const openDialogBox = new CustomEvent("dialogButtonEvent", {
+        const openDialogBox = new CustomEvent("dialogButtonDetailEvent", {
             detail: {
                 criminal: chosenCriminal
             }
         })
-        // Dispatch to event hub
         eventHub.dispatchEvent(openDialogBox);
     }
 })
 
-eventHub.addEventListener("dialogButtonEvent", event => {
+// Listens for the custom event, dialogButtonDetailEvent, to open a corresponding dialog box.
+eventHub.addEventListener("dialogButtonDetailEvent", event => {
     const dialogSiblingSelector = `#associates--${event.detail.criminal}+dialog`;
     const theDialog = document.querySelector(dialogSiblingSelector);
     theDialog.showModal();
 })
 
-export const initializeCloseButtonEvents = () => {
-    const allCloseButtons = document.querySelectorAll(".button--close")
-
-    for (const btn of allCloseButtons) {
-        btn.addEventListener(
-            "click",
-            theEvent => {
-                const dialogElement = theEvent.target.parentNode
-                dialogElement.close()
+// Listens for a "click" event and dispatches the custom event, dialogButtonCloseEvent,
+// to the eventHub to close a corresponding dialog box.
+eventHub.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id.startsWith("close-")) {
+        const [prefix, chosenDialog] = event.target.id.split("-");
+        const closeDialogBox = new CustomEvent("dialogButtonCloseEvent", {
+            detail: {
+                boxID: chosenDialog
             }
-        )
+        })
+        eventHub.dispatchEvent(closeDialogBox);
     }
-}
+})
+
+// Listens for the custom event, dialogButtonCloseEvent, to close a corresponding dialog box.
+eventHub.addEventListener("dialogButtonCloseEvent", event => {
+    const theDialogBoxID = `#details--${event.detail.boxID}`;
+    const theDialogElement = document.querySelector(theDialogBoxID);
+    theDialogElement.close();
+})

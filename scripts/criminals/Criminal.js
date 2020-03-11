@@ -1,3 +1,5 @@
+// Exports the function, criminal, to give structure to criminal elements
+// when looped through an array of criminal objects.
 export const criminal = (criminalObject) => {
     return`
     <div id="${criminalObject.conviction}" class="criminal">
@@ -15,15 +17,3 @@ export const criminal = (criminalObject) => {
     </div>
     `
 }
-
-
-{/* <dialog class="dialog--criminal" id="details--${criminalObject.id}">
-            <ul>
-            ${
-                criminalObject.known_associates.map(criminal => {
-                       return `<li>Associate: ${criminal.name} | Alibi: ${criminal.alibi}</li>`
-                   })
-               }
-            </ul>
-            <button class="button--close" id="close-${criminalObject.id}">Close</button>
-        </dialog> */}

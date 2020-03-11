@@ -5,28 +5,21 @@
 
  import { useConvictions } from "./ConvictionsProvider.js";
 
-/*
-    Which element in your HTML contains all components?
-    That's your Event Hub. Get a reference to it here.
-*/
-
 const eventHub = document.querySelector(".container");
 const contentTargetElement = document.querySelector(".filters__crime");
 
-// On the content target, listen for a "change" event.
+// Dispatches a custom event, either changeConviction or crimeWasChosen,
+// depending on the value the element (#crimeSelect) was changed to.
 contentTargetElement.addEventListener(
     "change", 
     event => {
-    // Only do this if the `crimeSelect` element was changed
     if (event.target.value !== "0") {
-        // Create custom event. Provide an appropriate name.
         let chosenCrime = event.target.value;
         let changeConvictionEvent = new CustomEvent("changeConviction", {
             detail: {
                 crime: chosenCrime
             }
         })
-        // Dispatch to event hub
         eventHub.dispatchEvent(changeConvictionEvent);
     } else if (event.target.value === "0") {
         let chosenCrime = event.target.value;
@@ -35,11 +28,12 @@ contentTargetElement.addEventListener(
                 crime: chosenCrime
             }
         })
-        // Dispatch to event hub
         eventHub.dispatchEvent(changeConvictionEvent);
     }
 })
 
+// Provides the HTML structure for a list of options
+// in the dropdown menue element (#crimeSelect) for ConvictionSelect.
 const render = convictionsCollection => {
     contentTargetElement.innerHTML = `
         <select class="dropdown" id="crimeSelect">
@@ -53,9 +47,8 @@ const render = convictionsCollection => {
     `;
 }
 
-const ConvictionSelect = () => {
+// Renders a list of options in the dropdown menue element (#crimeSelect).
+export const ConvictionSelect = () => {
     const convictions = useConvictions();
     render(convictions);
 }
-
-export default ConvictionSelect;

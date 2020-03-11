@@ -2,6 +2,8 @@ import { saveNote } from "./noteDataProvider.js"
 
 const contentTargetElement = document.querySelector(".noteFormContainer")
 
+// Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer),
+// when called by the function NoteForm.
 const render = () => {
     contentTargetElement.innerHTML = `
     <form id="noteForm">
@@ -17,25 +19,24 @@ const render = () => {
     `
 }
 
-// Handle browser-generated click event in component
+// Adds a "click" event listener to the button element (#saveNote) that collects the user entered data
+// of the form element (#noteForm) and runs the function saveNote to submit the data.
 contentTargetElement.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
         const contentTargetDate = document.getElementById("note--date").value;
         const contentTargetSuspect = document.getElementById("note--suspect").value;
         const contentTargetNoteText = document.getElementById("note--text").value;
 
-        // Make a new object representation of a note
         const newNote = {
             "date": contentTargetDate,
             "suspect": contentTargetSuspect,
             "notes": contentTargetNoteText
         }
-
-        // Change API state and application state
         saveNote(newNote)
     }
 })
 
+// Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
 export const NoteForm = () => {
     render()
 }
