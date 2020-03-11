@@ -8,3 +8,13 @@
 .bold {
     font-weight: bold;
 }
+
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}

@@ -2,7 +2,7 @@ import { useCriminals } from "./CriminalProvider.js";
 import { criminal } from "./Criminal.js";
 import { dialogElement } from "./dialog.js";
 
-const targetHeaderContentElement = document.querySelector(".headerContainer");
+const targetHeaderContentElement = document.querySelector("#buttonContainer");
 const targetContentElement = document.querySelector(".listContainer");
 const eventHub = document.querySelector(".container");
 

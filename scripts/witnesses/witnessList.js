@@ -1,7 +1,7 @@
 import { witness } from "./witness.js";
 import { useWitnesses } from "./witnessDataProvider.js";
 
-const targetHeaderContentElement = document.querySelector(".headerContainer");
+const targetHeaderContentElement = document.querySelector("#buttonContainer");
 const targetListContainerContentElement = document.querySelector(".listContainer");
 const eventHub = document.querySelector(".container");
 
