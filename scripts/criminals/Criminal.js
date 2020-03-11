@@ -11,8 +11,13 @@ export const criminal = (criminalObject) => {
             </p>
 
             <button id="associates--${criminalObject.id}">Associate Alibis</button>
+        </div>
+    </div>
+    `
+}
 
-            <dialog class="dialog--criminal" id="details--${criminalObject.id}">
+
+{/* <dialog class="dialog--criminal" id="details--${criminalObject.id}">
             <ul>
             ${
                 criminalObject.known_associates.map(criminal => {
@@ -21,8 +26,4 @@ export const criminal = (criminalObject) => {
                }
             </ul>
             <button class="button--close" id="close-${criminalObject.id}">Close</button>
-        </dialog>
-        </div>
-    </div>
-    `
-}
+        </dialog> */}
