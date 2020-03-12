@@ -4,8 +4,8 @@
       "date": "2020-03-10",
       "suspect": "Everyone",
       "noteText": "This is the beginning of my case. Currently, everyone is a suspect. EVEN ME!",
-      "id": 1,
-      "criminalId": 1
+      "criminalId": 1,
+      "id": 1
     }
   ]
 }

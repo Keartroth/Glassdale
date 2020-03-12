@@ -26,7 +26,8 @@ const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
                 <p>${note.noteText}</p>
             </section>
         `
-    })
+    }
+    )
 }
 
 // Function that calls useNotes and useCriminals for both arrays and passes the arrays into render as the parameters to the argument.

@@ -1,5 +1,6 @@
 const eventHub = document.querySelector(".container")
 
+// Dispatches noteStateChanged to the eventHub so that getNotes will update the array notes.
 const dispatchStateChangeEvent = () => {
     const noteStateChangedEvent = new CustomEvent("noteStateChanged")
 
@@ -26,7 +27,17 @@ export const getNotes = () => {
 
 }
 
-// Converts a JavaScript string of criminals data to a JSON string and then Posts it.
+/*
+*   Listens for the custom event, noteStateChanged, on the eventHub
+*   and calls the function getNotes to re-evaluate the notes array.
+*/
+eventHub.addEventListener(
+    "noteStateChanged",
+    getNotes()
+)
+
+
+// Converts a JavaScript string of criminals data to a JSON string, Posts it, and then dispatches a custom event to the eventHub.
 export const saveNote = note => {
     fetch('http://localhost:8088/notes', {
         method: "POST",
