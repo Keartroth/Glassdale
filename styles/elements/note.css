@@ -5,6 +5,13 @@
     padding: 1em;
 }
 
+.note {
+    background-color: aliceblue;
+    border: 1px solid black;
+    font-family: monospace;
+    text-indent: 20px;
+}
+
 #noteForm {
     background-color: aliceblue;
     border: 2px solid black;

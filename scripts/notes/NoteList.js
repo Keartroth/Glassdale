@@ -1,6 +1,7 @@
 import { useNotes } from './noteDataProvider.js'
 import { useCriminals } from '../criminals/CriminalProvider.js'
 
+const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".notesContainer");
 const targetHeaderContentElement = document.querySelector("#buttonContainer")
 
@@ -35,3 +36,23 @@ export const NoteList = () => {
 
     render(notes, criminals)
 }
+/*
+*   Listens for a "click" event and dispatches the custom event, renderAllNotesToDOM, to the eventHub
+*   to render a list of notes to the DOM in the section element (.notesContainer).
+*/
+targetHeaderContentElement.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id === ("button--noteList")) {
+        const showNotesButtonClicked = new CustomEvent("renderAllNotesToDOM");
+        eventHub.dispatchEvent(showNotesButtonClicked);
+    }
+})
+/*
+ *  Listens for the custom event, renderAllNotesToDOM, to render a list of notes to the DOM
+ *  in the section element (.notesContainer) by running the NoteList function.
+*/
+eventHub.addEventListener("renderAllNotesToDOM", event => {
+    NoteList();
+
+})
