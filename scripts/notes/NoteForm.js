@@ -33,17 +33,18 @@ contentTargetElement.addEventListener("click", clickEvent => {
         const contentTargetNoteText = document.getElementById("note--text").value;
 
         const findCriminalID = (arrayOfCriminalObjects, criminalName) => {
-            const criminalIdValue = arrayOfCriminalObjects.find(
+            const criminalIdValue = arrayOfCriminalObjects.map(criminal => {
+                criminalIdValueTwo = arrayOfCriminalObjects.find(
                 criminal => {
-                    criminal.name === criminalName.name;
+                    criminal.name === criminalName;
                     return criminal.id;
                 });
-            
+
             return criminalIdValue
-        }
+        })
 
         const relatedCriminalId = findCriminalID(criminals, contentTargetSuspect);
-        
+
         const newNote = {
             "date": contentTargetDate,
             "suspect": contentTargetSuspect,
@@ -61,3 +62,14 @@ contentTargetElement.addEventListener("click", clickEvent => {
 export const NoteForm = () => {
     render()
 }
+
+
+        // const findCriminalID = (arrayOfCriminalObjects, criminalName) => {
+        //     const criminalIdValue = arrayOfCriminalObjects.map(
+        //         criminal => {
+        //         const criminalId = arrayOfCriminalObjects.find(
+        //             criminal => criminal.name === criminalName)
+        //             return criminal.id;
+
+        //     return criminalIdValue
+        // }
