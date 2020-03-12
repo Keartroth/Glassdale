@@ -1,5 +1,4 @@
-import { useNotes } from './noteDataProvider.js'
-import { useCriminals } from '../criminals/CriminalProvider.js'
+import { useNotes, deleteNote } from './noteDataProvider.js'
 import { NoteComponent } from './Note.js';
 
 const eventHub = document.querySelector(".container")
@@ -12,26 +11,6 @@ export const noteListButton = () => {
     <button id="button--noteList">Show All Notes</button>
     `
 }
-/*
-    Function that takes two arguments, an array of notes and an array of criminals,
-    and then loops over the array of notes, and for each note searches the entire array
-    of criminals and links corresponding criminals to notes by the two called key/value pairs.
-*/
-// const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
-//     contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
-//         const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
-
-//         return `
-//             <h2>Cold Case Notes</h2>
-//             <section class="note">
-//                 <h4>Note about ${relatedCriminal.name}</h4>
-//                 <p>${note.noteText}</p>
-//             </section>
-//         `
-//     }
-//     )
-// }
-
 /*
  *  Function that takes two arguments, an array of notes and an array of criminals,
  *  and then loops over the array of notes, and for each note searches the entire array
@@ -72,3 +51,45 @@ eventHub.addEventListener("renderAllNotesToDOM", event => {
     NoteList();
 
 })
+/*
+ *  Listens for a "click" event ("#deleteNote--") and runs the function deleteNote function, sends the note.id
+ *   as the parameter for the argument, and then calls the render function with an updated notes array.
+*/
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+       deleteNote(id).then(
+           () => {
+               const updatedNotes = useNotes()
+               render(updatedNotes)
+           }
+       )
+    }
+})
+
+/*
+    Function that takes two arguments, an array of notes and an array of criminals,
+    and then loops over the array of notes, and for each note searches the entire array
+    of criminals and links corresponding criminals to notes by the two called key/value pairs.
+*/
+// const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
+//     contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
+//         const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
+
+//         return `
+//             <h2>Cold Case Notes</h2>
+//             <section class="note">
+//                 <h4>Note about ${relatedCriminal.name}</h4>
+//                 <p>${note.noteText}</p>
+//             </section>
+//         `
+//     }
+//     )
+// }
