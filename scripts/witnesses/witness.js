@@ -1,5 +1,7 @@
-// Exports the function, witness, to give structure to witness card elements
-// when looped through an array of witness objects.
+/*
+ *  Exports the function, witness, to give structure to witness card elements 
+ *  when looped through an array of witness objects. 
+*/
 export const witness = (witnessObject) => {
     return`
     <div id="witness--${witnessObject.id}" class="witness">

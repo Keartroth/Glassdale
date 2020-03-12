@@ -1,5 +1,8 @@
-// Exports the function, criminal, to give structure to criminal elements
-// when looped through an array of criminal objects.
+/*
+*   Exports the function, criminal, to give structure to criminal elements
+*   when looped through an array of criminal objects.
+*/
+
 export const criminal = (criminalObject) => {
     return`
     <div id="${criminalObject.conviction}" class="criminal">

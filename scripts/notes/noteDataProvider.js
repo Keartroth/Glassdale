@@ -6,8 +6,15 @@ const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(noteStateChangedEvent)
 }
 
+// Sets empty array for getNotes to place the parsed data in.
 const notes = [];
 
+// Returns a copy of the array notes to be used later.
+export const useNotes = () => {
+    return notes.slice();
+}
+
+// Fetches a JSON string of notes data and then converts it to a JavaScript array.
 const getNotes = () => {
     fetch('http://localhost:8088/notes')
         .then(response => response.json())
@@ -17,6 +24,7 @@ const getNotes = () => {
 
 }
 
+// Converts a JavaScript string of criminals data to a JSON string and then Posts it.
 export const saveNote = note => {
     fetch('http://localhost:8088/notes', {
         method: "POST",

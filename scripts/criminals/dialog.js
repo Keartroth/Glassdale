@@ -16,9 +16,10 @@ export const dialogElement = (criminalObject) => {
         </dialog>
         `
 }
-
-// Listens for a "click" event and dispatches the custom event, dialogButtonDetailEvent,
-// to the eventHub to open a corresponding dialog box.
+/*
+ *  Listens for a "click" event and dispatches the custom event, dialogButtonDetailEvent,
+ *  to the eventHub to open a corresponding dialog box.
+*/
 eventHub.addEventListener(
     "click", 
     event => {
@@ -39,9 +40,10 @@ eventHub.addEventListener("dialogButtonDetailEvent", event => {
     const theDialog = document.querySelector(dialogSiblingSelector);
     theDialog.showModal();
 })
-
-// Listens for a "click" event and dispatches the custom event, dialogButtonCloseEvent,
-// to the eventHub to close a corresponding dialog box.
+/*
+*   Listens for a "click" event and dispatches the custom event, dialogButtonCloseEvent,
+*   to the eventHub to close a corresponding dialog box.
+*/
 eventHub.addEventListener(
     "click", 
     event => {

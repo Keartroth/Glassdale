@@ -1,9 +1,10 @@
 import { saveNote } from "./noteDataProvider.js"
 
 const contentTargetElement = document.querySelector(".noteFormContainer")
-
-// Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer),
-// when called by the function NoteForm.
+/*
+ *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
+ *  when called by the function NoteForm.
+*/
 const render = () => {
     contentTargetElement.innerHTML = `
     <form id="noteForm">
@@ -18,9 +19,10 @@ const render = () => {
         </form>
     `
 }
-
-// Adds a "click" event listener to the button element (#saveNote) that collects the user entered data
-// of the form element (#noteForm) and runs the function saveNote to submit the data.
+/*
+ *  Adds a "click" event listener to the button element (#saveNote) that collects the user entered data 
+ *  of the form element (#noteForm) and runs the function saveNote to submit the data. 
+*/
 contentTargetElement.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
         const contentTargetDate = document.getElementById("note--date").value;

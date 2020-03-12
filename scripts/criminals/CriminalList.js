@@ -5,9 +5,10 @@ import { dialogElement } from "./dialog.js";
 const targetHeaderContentElement = document.querySelector("#buttonContainer");
 const targetContentElement = document.querySelector(".listContainer");
 const eventHub = document.querySelector(".container");
-
-// Listens for the custom event dispatched in ConvictionSelect
-// to filter initial criminal list with the filterRender function.
+/*
+*   Listens for the custom event dispatched in ConvictionSelect
+*   to filter initial criminal list with the filterRender function.
+*/
 eventHub.addEventListener("changeConviction", event => {
     if ("crime" in event.detail) {
         const appStateCriminals = useCriminals();
@@ -53,9 +54,10 @@ export const criminalListButton = () => {
     <button id="button--criminalList">Show All Criminals</button>
     `
 }
-
-// Listens for a "click" event and dispatches the custom event, witnessListButtonClicked, to the eventHub
-// to set the article element (.listContainer) to empty and render a list of witnesses to the DOM in (.listContainer).
+/*
+*   Listens for a "click" event and dispatches the custom event, witnessListButtonClicked, to the eventHub
+*   to set the article element (.listContainer) to empty and render a list of witnesses to the DOM in (.listContainer).
+*/
 eventHub.addEventListener(
     "click", 
     event => {
@@ -64,9 +66,10 @@ eventHub.addEventListener(
         eventHub.dispatchEvent(criminalListGenerateEvent);
     }
 })
-
-// Listens for the custom event, criminalListGenerate, to set the article element (.listContainer) to empty,
-// and render a list of witnesses to the DOM in (.listContainer) by running the criminalList function.
+/*
+ *  Listens for the custom event, criminalListGenerate, to set the article element (.listContainer) to empty, 
+ *  and render a list of witnesses to the DOM in (.listContainer) by running the criminalList function. 
+*/
 eventHub.addEventListener("criminalListGenerate", event => {
     criminalList();
 
