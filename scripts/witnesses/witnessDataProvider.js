@@ -1,9 +1,12 @@
-export let witnesses = [];
+// Sets empty array for getWitnesses to place the parsed data in.
+let witnesses = [];
 
+// Returns a copy of the array witnesses to be used later.
 export const useWitnesses = () => {
     return witnesses.slice();
 }
 
+// Fetches a JSON string of witnessess data and then converts it to a JavaScript array.
 export const getWitnesses = () => {
     return fetch("https://criminals.glassdale.us/witnesses")
         .then(response => response.json())
