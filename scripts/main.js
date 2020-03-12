@@ -5,8 +5,12 @@ import { getConvictions } from "./convictions/ConvictionsProvider.js";
 import { NoteForm } from "./notes/NoteForm.js";
 import { witnessListButton } from "./witnesses/witnessList.js";
 import { getWitnesses } from "./witnesses/witnessDataProvider.js";
+import { getNotes } from "./notes/noteDataProvider.js";
+import { noteListButton } from "./notes/NoteList.js";
 
 NoteForm();
 getConvictions().then(ConvictionSelect);
 getWitnesses().then(witnessListButton);
 getCriminals().then(criminalList).then(criminalListButton);
+getNotes();
+noteListButton();

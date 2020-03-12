@@ -1,4 +1,10 @@
 /* CSS file for the form element (#noteForm) in the article (.noteFormContainer). */
+#button--noteList {
+    font-family: monospace;
+    margin: auto;
+    padding: 1em;
+}
+
 #noteForm {
     background-color: aliceblue;
     border: 2px solid black;

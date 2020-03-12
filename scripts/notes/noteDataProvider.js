@@ -7,7 +7,7 @@ const dispatchStateChangeEvent = () => {
 }
 
 // Sets empty array for getNotes to place the parsed data in.
-const notes = [];
+let notes = [];
 
 // Returns a copy of the array notes to be used later.
 export const useNotes = () => {
@@ -15,12 +15,14 @@ export const useNotes = () => {
 }
 
 // Fetches a JSON string of notes data and then converts it to a JavaScript array.
-const getNotes = () => {
+export const getNotes = () => {
     fetch('http://localhost:8088/notes')
         .then(response => response.json())
-        .then(parsedNotes => {
+        .then(
+            parsedNotes => {
             notes = parsedNotes
-        })
+        }
+        );
 
 }
 

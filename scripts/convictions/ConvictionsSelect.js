@@ -35,9 +35,7 @@ export const ConvictionSelect = () => {
 contentTargetElement.addEventListener(
     "change", 
     event => {
-        console.log("event triggered.")
     if (event.target.id === "crimeSelect") {
-        console.log("event triggered inside if statement.")
         if (event.target.value !== "0") {
             let chosenCrime = event.target.value;
             let changeConvictionEvent = new CustomEvent("changeConviction", {
