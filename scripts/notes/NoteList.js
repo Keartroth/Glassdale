@@ -1,5 +1,6 @@
 import { useNotes } from './noteDataProvider.js'
 import { useCriminals } from '../criminals/CriminalProvider.js'
+import { NoteComponent } from './Note.js';
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".notesContainer");
@@ -16,26 +17,40 @@ export const noteListButton = () => {
     and then loops over the array of notes, and for each note searches the entire array
     of criminals and links corresponding criminals to notes by the two called key/value pairs.
 */
-const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
-    contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
-        const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
+// const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
+//     contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
+//         const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
 
-        return `
-            <section class="note">
-                <h2>Note about ${relatedCriminal.name}</h2>
-                <p>${note.noteText}</p>
-            </section>
-        `
-    }
-    )
+//         return `
+//             <h2>Cold Case Notes</h2>
+//             <section class="note">
+//                 <h4>Note about ${relatedCriminal.name}</h4>
+//                 <p>${note.noteText}</p>
+//             </section>
+//         `
+//     }
+//     )
+// }
+
+/*
+ *  Function that takes two arguments, an array of notes and an array of criminals,
+ *  and then loops over the array of notes, and for each note searches the entire array
+ *  of criminals and links corresponding criminals to notes by the two called key/value pairs.
+*/
+const render = notes => {
+    contentTarget.innerHTML = `
+        <h2 id="note__heading">Cold Case Notes</h2>
+        ${
+            notes.map(note => NoteComponent(note)).join("")
+        }
+    `
 }
 
 // Function that calls useNotes and useCriminals for both arrays and passes the arrays into render as the parameters to the argument.
 export const NoteList = () => {
-    const notes = useNotes()
-    const criminals = useCriminals()
+    const notes = useNotes();
 
-    render(notes, criminals)
+    render(notes);
 }
 /*
 *   Listens for a "click" event and dispatches the custom event, renderAllNotesToDOM, to the eventHub

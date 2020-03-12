@@ -5,10 +5,17 @@
     padding: 1em;
 }
 
+.deleteNoteButton {
+    display: block;
+    margin: auto;
+    padding: 0.5em;
+}
+
 .note {
     background-color: aliceblue;
     border: 1px solid black;
     font-family: monospace;
+    margin: 15px auto;
     text-indent: 20px;
 }
 
@@ -30,8 +37,17 @@
     padding-right: 17px;
 }
 
+#note__heading {
+    text-align: center;
+    text-decoration: underline;
+}
+
 #note--suspect {
     margin-bottom: 20px;
+}
+
+.note__suspect {
+    text-decoration: underline;
 }
 
 #note--text {
