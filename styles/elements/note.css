@@ -11,6 +11,17 @@
     padding: 0.5em;
 }
 
+.dialog--note {
+    background-color: aliceblue;
+    border: 2px solid black;
+    font-family: monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    justify-content: space-around;
+    min-width: 450px;
+    padding: 20px;
+}
+
 .editNoteButton {
     display: block;
     margin: auto;
@@ -61,6 +72,16 @@
     height: 100px;
     margin: auto;
     width: 90%;
+}
+
+#nte--suspect--edit {
+    height: 22px;
+    width: 225px;
+}
+
+#note--text--edit {
+    height: 120px;
+    width: 720px;
 }
 
 #saveNote {

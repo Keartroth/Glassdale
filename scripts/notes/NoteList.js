@@ -75,21 +75,26 @@ eventHub.addEventListener("click", clickEvent => {
 })
 
 /*
-    Function that takes two arguments, an array of notes and an array of criminals,
-    and then loops over the array of notes, and for each note searches the entire array
-    of criminals and links corresponding criminals to notes by the two called key/value pairs.
+ *  Listens for a "click" event and dispatches the custom event, editDialogButtonDetailEvent,
+ *  to the eventHub to open a corresponding dialog box.
 */
-// const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
-//     contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
-//         const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
+eventHub.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id.startsWith("editNote--")) {
+        const [prefix, chosenNote] = event.target.id.split("--");
+        const openDialogBox = new CustomEvent("editDialogButtonDetailEvent", {
+            detail: {
+                note: chosenNote
+            }
+        })
+        eventHub.dispatchEvent(openDialogBox);
+    }
+})
 
-//         return `
-//             <h2>Cold Case Notes</h2>
-//             <section class="note">
-//                 <h4>Note about ${relatedCriminal.name}</h4>
-//                 <p>${note.noteText}</p>
-//             </section>
-//         `
-//     }
-//     )
-// }
+// Listens for the custom event, editDialogButtonDetailEvent, to open a corresponding dialog box.
+eventHub.addEventListener("editDialogButtonDetailEvent", event => {
+    const dialogSiblingSelector = `#editNote--${event.detail.note}+dialog`;
+    const editDialog = document.querySelector(dialogSiblingSelector);
+    editDialog.showModal();
+})

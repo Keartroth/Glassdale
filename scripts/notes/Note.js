@@ -3,12 +3,22 @@ export const NoteComponent = noteObject => `
         <h4 class="note__suspect"><span class="bold">Suspect</span>: ${noteObject.suspect}</h4>
         <p class="note__timestamp"><span class="bold">Note Entry Date</span>: ${noteObject.date}</p>
         <p class="note__text">${noteObject.noteText}</p>
-        <button id="editNote--${noteObject.id}" class="editNoteButton">Edit Note</button>
-        <dialog class="dialog--note" id="details--${noteObject.id}">
         
-        <button id="editNoteSubmit--${noteObject.id}" class="editNoteSubmitButton">Submit Edited Note</button>
-        <button class="button--close" id="closeEdit-${noteObject.id}">Close Unedited</button>
+        <button id="editNote--${noteObject.id}" class="editNoteButton">Edit Note</button>
+
+        <dialog class="dialog--note" id="details--${noteObject.id}">
+            <label for="note--date--edit">Date: (current value ${noteObject.date})</label>
+            <input type="date" id="note--date--edit" required></br>
+            <label for="note--suspect--edit">Suspect:</label>
+            <textarea id="note--suspect--edit" required>${noteObject.suspect}</textarea></br>
+            <label for="note--text--edit">Note:</label></br>
+            <textarea id="note--text--edit" required>${noteObject.noteText}</textarea></br>
+
+        
+            <button id="editNoteSubmit--${noteObject.id}" class="editNoteSubmitButton">Submit Edited Note</button>
+            <button class="button--close" id="close-${noteObject.id}">Close Unedited</button>
         </dialog>
+
         <button id="deleteNote--${noteObject.id}" class="deleteNoteButton">Delete Note</button>
     </section>
 `
