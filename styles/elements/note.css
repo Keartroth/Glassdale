@@ -1,4 +1,10 @@
 /* CSS file for the form element (#noteForm) in the article (.noteFormContainer). */
+.button--close--edit {
+    bottom: 25px;
+    position: absolute;
+    right: 220px;
+}
+
 #button--noteList {
     font-family: monospace;
     margin: auto;
@@ -17,15 +23,23 @@
     font-family: monospace;
     font-size: 1.25em;
     font-weight: bold;
+    height: 255px;
     justify-content: space-around;
-    min-width: 450px;
     padding: 20px;
+    position: relative;
+    width: 725px;
 }
 
 .editNoteButton {
     display: block;
     margin: auto;
     padding: 0.5em;
+}
+
+.editNoteSubmitButton {
+    bottom: 25px;
+    left: 220px;
+    position: absolute;
 }
 
 .note {
@@ -54,6 +68,18 @@
     padding-right: 17px;
 }
 
+.note--date--edit {
+    height: 22px;
+    left: 120px;
+    position: absolute;
+}
+
+.note--date--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 26px;
+}
+
 #note__heading {
     text-align: center;
     text-decoration: underline;
@@ -67,6 +93,20 @@
     text-decoration: underline;
 }
 
+.note--suspect--edit {
+    height: 16px;
+    left: 120px;
+    position: absolute;
+    top: 55px;
+    width: 200px;
+}
+
+.note--suspect--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 55px;
+}
+
 #note--text {
     display: block;
     height: 100px;
@@ -74,12 +114,25 @@
     width: 90%;
 }
 
-#nte--suspect--edit {
-    height: 22px;
-    width: 225px;
+.note--text--edit {
+    height: 120px;
+    position: absolute;
+    top: 110px;
+    width: 720px;
 }
 
-#note--text--edit {
+.note--text--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 85px;
+}
+
+.note--suspect--edit {
+    height: 16px;
+    width: 200px;
+}
+
+.note--text--edit {
     height: 120px;
     width: 720px;
 }

@@ -82,10 +82,13 @@ eventHub.addEventListener(
     "click", 
     event => {
     if (event.target.id.startsWith("editNote--")) {
+        const noteDateUnsplit = event.target.parentElement.querySelector(".note__timestamp").innerText;
+        const [dateprefix, noteDate] = noteDateUnsplit.split(": ")
         const [prefix, chosenNote] = event.target.id.split("--");
         const openDialogBox = new CustomEvent("editDialogButtonDetailEvent", {
             detail: {
-                note: chosenNote
+                note: chosenNote,
+                date: noteDate
             }
         })
         eventHub.dispatchEvent(openDialogBox);
@@ -97,4 +100,9 @@ eventHub.addEventListener("editDialogButtonDetailEvent", event => {
     const dialogSiblingSelector = `#editNote--${event.detail.note}+dialog`;
     const editDialog = document.querySelector(dialogSiblingSelector);
     editDialog.showModal();
+    const setDate = (noteObjectDate) => {
+        const dialogDateNode = editDialog.getElementsByClassName("note--date--edit");
+        dialogDateNode[0].value = `${noteObjectDate}`;
+      }
+    setDate(event.detail.date);
 })
