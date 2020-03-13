@@ -11,6 +11,12 @@
     padding: 0.5em;
 }
 
+.editNoteButton {
+    display: block;
+    margin: auto;
+    padding: 0.5em;
+}
+
 .note {
     background-color: aliceblue;
     border: 1px solid black;
