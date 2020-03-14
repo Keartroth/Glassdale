@@ -1,6 +1,6 @@
 import { NoteList } from "./NoteList.js";
 
-const eventHub = document.querySelector(".container")
+const eventHub = document.querySelector(".container");
 
 // Sets empty array for getNotes to place the parsed data in.
 let notes = [];

@@ -1,9 +1,9 @@
-import { useNotes, deleteNote, editNote } from './noteDataProvider.js'
+import { useNotes, deleteNote, editNote } from './noteDataProvider.js';
 import { NoteComponent } from './Note.js';
 
-const eventHub = document.querySelector(".container")
+const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".notesContainer");
-const targetHeaderContentElement = document.querySelector("#buttonContainer")
+const targetHeaderContentElement = document.querySelector("#buttonContainer");
 
 // Inserts a button, Show All Notes, onto the DOM in the section element (.buttonContainer).
 export const noteListButton = () => {

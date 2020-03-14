@@ -1,4 +1,4 @@
-import { witness } from "./witness.js";
+import { witness } from "./Witness.js";
 import { useWitnesses } from "./witnessDataProvider.js";
 
 const targetHeaderContentElement = document.querySelector("#buttonContainer");

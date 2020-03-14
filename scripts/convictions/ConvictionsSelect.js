@@ -2,7 +2,7 @@
  *   ConvictionSelect component that renders a select HTML element
  *   which lists all convictions in the Glassdale PD API
  */
-import { useConvictions } from "./ConvictionsProvider.js";
+import { useConvictions } from "./convictionsDataProvider.js";
 
 const eventHub = document.querySelector(".container");
 const contentTargetElement = document.querySelector(".filters__crime");

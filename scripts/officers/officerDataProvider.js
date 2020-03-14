@@ -1,5 +1,5 @@
 // Sets empty array for getOfficers to place the parsed data in.
-let officers = []
+let officers = [];
 
 // Returns a copy of the array officers to be used later.
 export const useOfficers = () => {

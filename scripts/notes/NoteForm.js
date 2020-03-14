@@ -1,7 +1,7 @@
-import { saveNote } from "./noteDataProvider.js"
-import { useCriminals } from "../criminals/CriminalProvider.js"
+import { saveNote } from "./noteDataProvider.js";
+import { useCriminals } from "../criminals/criminalDataProvider.js";
 
-const contentTargetElement = document.querySelector(".noteFormContainer")
+const contentTargetElement = document.querySelector(".noteFormContainer");
 /*
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
  *  when called by the function NoteForm.

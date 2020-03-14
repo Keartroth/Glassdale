@@ -1,6 +1,6 @@
-import { useCriminals } from "./CriminalProvider.js";
+import { useCriminals } from "./criminalDataProvider.js";
 import { criminal } from "./Criminal.js";
-import { dialogElement } from "./dialog.js";
+import { dialogElement } from "./Dialog.js";
 
 const targetHeaderContentElement = document.querySelector("#buttonContainer");
 const targetContentElement = document.querySelector(".listContainer");
