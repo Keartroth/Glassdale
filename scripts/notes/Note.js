@@ -1,8 +1,10 @@
 export const NoteComponent = noteObject => `
-    <section class="note note__criminal--${noteObject.criminalId}">
+    <section class="note" id="note--${noteObject.id}">
         <h4 class="note__suspect"><span class="bold">Suspect</span>: ${noteObject.suspect}</h4>
         <p class="note__timestamp"><span class="bold">Note Entry Date</span>: ${noteObject.date}</p>
         <p class="note__text">${noteObject.noteText}</p>
+
+        <button id="toggleNote--${noteObject.id}" class="toggleNoteButton">Hide Note</button>
         
         <button id="editNote--${noteObject.id}" class="editNoteButton">Edit Note</button>
 
@@ -15,7 +17,7 @@ export const NoteComponent = noteObject => `
             <textarea id="note--text--edit--${noteObject.id}" class="note--text--edit" required>${noteObject.noteText}</textarea></br>
 
         
-            <button id="editNoteSubmit--${noteObject.id}" class="editNoteSubmitButton">Submit Edited Note</button>
+            <button id="editNoteSubmit--${noteObject.id}--${noteObject.criminalId}" class="editNoteSubmitButton">Submit Edited Note</button>
             <button class="button--close button--close--edit" id="close-${noteObject.id}">Close Unedited</button>
         </dialog>
 

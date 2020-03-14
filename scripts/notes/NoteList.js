@@ -1,4 +1,4 @@
-import { useNotes, deleteNote } from './noteDataProvider.js'
+import { useNotes, deleteNote, editNote } from './noteDataProvider.js'
 import { NoteComponent } from './Note.js';
 
 const eventHub = document.querySelector(".container")
@@ -106,3 +106,49 @@ eventHub.addEventListener("editDialogButtonDetailEvent", event => {
       }
     setDate(event.detail.date);
 })
+/*
+ *  Listens for a "click" event and dispatches the custom event,
+ *  toggleNoteEvent, to the eventHub to hide a corresponding note.
+*/
+eventHub.addEventListener('click', clickEvent => {
+    if (clickEvent.target.id.startsWith('toggleNote--')) {
+        const [prefix, toggleNoteOption] = clickEvent.target.id.split('--');
+
+        const changeToggleOption = new CustomEvent('toggleNoteEvent', {
+            detail: {
+                toggleValue: toggleNoteOption
+            }
+        })
+
+        eventHub.dispatchEvent(changeToggleOption)
+    }
+})
+
+// Listens for the custom event, toggleNoteEvent, to hide a corresponding note (#note--${event.detail.toggleValue}).
+eventHub.addEventListener("toggleNoteEvent", event => {
+    const noteElement = document.getElementById(`note--${event.detail.toggleValue}`)
+    noteElement.classList.toggle("hidden");
+})
+
+// Listens for a "click" event and invokes the function, editNote, to replace the JSON data object with new values.
+eventHub.addEventListener(
+    "click", 
+    theEditEvent => {
+        if (event.target.id.startsWith("editNoteSubmit--")) {
+            const [prefix, editedNoteId, editedCriminalNoteId] = theEditEvent.target.id.split('--');
+            const contentTargetDate = document.getElementById(`note--date--edit--${editedNoteId}`).value;
+            const contentTargetSuspect = document.getElementById(`note--suspect--edit--${editedNoteId}`).value;
+            const contentTargetNoteText = document.getElementById(`note--text--edit--${editedNoteId}`).value;
+
+            const editedNoteObject = {
+                "date": contentTargetDate,
+                "suspect": contentTargetSuspect,
+                "noteText": contentTargetNoteText,
+                "criminalId": editedCriminalNoteId,
+                "id": editedNoteId
+            }
+        editNote(editedNoteObject);
+        document.getElementById(`details--${editedNoteId}`).close()
+        }
+    }
+)

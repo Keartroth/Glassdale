@@ -12,9 +12,11 @@
 }
 
 .deleteNoteButton {
-    display: block;
-    margin: auto;
+    bottom: 15px;
+    display: inline-block;
     padding: 0.5em;
+    position: absolute;
+    right: 10px;
 }
 
 .dialog--note {
@@ -31,9 +33,11 @@
 }
 
 .editNoteButton {
-    display: block;
-    margin: auto;
+    bottom: 15px;
+    display: inline-block;
     padding: 0.5em;
+    position: absolute;
+    right: 45%;
 }
 
 .editNoteSubmitButton {
@@ -42,12 +46,21 @@
     position: absolute;
 }
 
+.hidden {
+    display: none;
+}
+
 .note {
     background-color: aliceblue;
     border: 1px solid black;
     font-family: monospace;
     margin: 15px auto;
+    min-height: 165px;
+    padding: 15px;
+    position: relative;
     text-indent: 20px;
+    width: 50%;
+    word-wrap: break-word;
 }
 
 #noteForm {
@@ -141,4 +154,12 @@
     display: block;
     margin: auto;
     padding: 1.25em;
+}
+
+.toggleNoteButton {
+    bottom: 15px;
+    display: inline-block;
+    left: 10px;
+    padding: 0.5em;
+    position: absolute;
 }

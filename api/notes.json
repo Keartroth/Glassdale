@@ -6,6 +6,13 @@
       "noteText": "This is the beginning of my case. Currently, everyone is a suspect. EVEN ME!",
       "criminalId": 1,
       "id": 1
+    },
+    {
+      "date": "2020-03-13",
+      "suspect": "Michael Eugene Carroll, Jr",
+      "noteText": "Michael Carroll was born on this day; clearly he is the culprit!\n\nNOPE NOPE NOPE NOPE NOPE NOPE! This time it will close!!!!",
+      "criminalId": "9001",
+      "id": 2
     }
   ]
 }
