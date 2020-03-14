@@ -1,4 +1,10 @@
 /* CSS file for the form element (#noteForm) in the article (.noteFormContainer). */
+.button--close--edit {
+    bottom: 25px;
+    position: absolute;
+    right: 220px;
+}
+
 #button--noteList {
     font-family: monospace;
     margin: auto;
@@ -6,9 +12,42 @@
 }
 
 .deleteNoteButton {
-    display: block;
-    margin: auto;
+    bottom: 15px;
+    display: inline-block;
     padding: 0.5em;
+    position: absolute;
+    right: 10px;
+}
+
+.dialog--note {
+    background-color: aliceblue;
+    border: 2px solid black;
+    font-family: monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    height: 255px;
+    justify-content: space-around;
+    padding: 20px;
+    position: relative;
+    width: 725px;
+}
+
+.editNoteButton {
+    bottom: 15px;
+    display: inline-block;
+    padding: 0.5em;
+    position: absolute;
+    right: 45%;
+}
+
+.editNoteSubmitButton {
+    bottom: 25px;
+    left: 220px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
 }
 
 .note {
@@ -16,7 +55,12 @@
     border: 1px solid black;
     font-family: monospace;
     margin: 15px auto;
+    min-height: 165px;
+    padding: 15px;
+    position: relative;
     text-indent: 20px;
+    width: 50%;
+    word-wrap: break-word;
 }
 
 #noteForm {
@@ -37,6 +81,18 @@
     padding-right: 17px;
 }
 
+.note--date--edit {
+    height: 22px;
+    left: 120px;
+    position: absolute;
+}
+
+.note--date--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 26px;
+}
+
 #note__heading {
     text-align: center;
     text-decoration: underline;
@@ -50,6 +106,20 @@
     text-decoration: underline;
 }
 
+.note--suspect--edit {
+    height: 16px;
+    left: 120px;
+    position: absolute;
+    top: 55px;
+    width: 200px;
+}
+
+.note--suspect--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 55px;
+}
+
 #note--text {
     display: block;
     height: 100px;
@@ -57,8 +127,39 @@
     width: 90%;
 }
 
+.note--text--edit {
+    height: 120px;
+    position: absolute;
+    top: 110px;
+    width: 720px;
+}
+
+.note--text--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 85px;
+}
+
+.note--suspect--edit {
+    height: 16px;
+    width: 200px;
+}
+
+.note--text--edit {
+    height: 120px;
+    width: 720px;
+}
+
 #saveNote {
     display: block;
     margin: auto;
     padding: 1.25em;
+}
+
+.toggleNoteButton {
+    bottom: 15px;
+    display: inline-block;
+    left: 10px;
+    padding: 0.5em;
+    position: absolute;
 }

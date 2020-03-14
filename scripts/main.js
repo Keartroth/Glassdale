@@ -8,9 +8,9 @@ import { getWitnesses } from "./witnesses/witnessDataProvider.js";
 import { getNotes } from "./notes/noteDataProvider.js";
 import { noteListButton } from "./notes/NoteList.js";
 
+getNotes();
 NoteForm();
 getConvictions().then(ConvictionSelect);
 getWitnesses().then(witnessListButton);
 getCriminals().then(criminalList).then(criminalListButton);
-getNotes();
 noteListButton();

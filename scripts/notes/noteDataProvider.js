@@ -23,7 +23,7 @@ export const getNotes = () => {
 }
 
 // Dispatches noteStateChanged to the eventHub so that getNotes will update the array notes.
-const dispatchStateChangeEvent = () => {
+export const dispatchStateChangeEvent = () => {
     const noteStateChangedEvent = new CustomEvent("noteStateChanged")
 
     eventHub.dispatchEvent(noteStateChangedEvent)
@@ -38,7 +38,6 @@ eventHub.addEventListener(
     NoteList()
 )
 
-
 // Converts a JavaScript string of criminals data to a JSON string, Posts it, and then dispatches a custom event to the eventHub to refresh the notes array.
 export const saveNote = note => {
     fetch('http://localhost:8088/notes', {
@@ -49,7 +48,7 @@ export const saveNote = note => {
         body: JSON.stringify(note)
     })
     // .then(getNotes)
-    .then(dispatchStateChangeEvent)
+    .then(dispatchStateChangeEvent);
 }
 
 // Deletes a string of criminals data in a JSON file, and then dispatches a custom event to the eventHub to refresh the notes array.
@@ -57,5 +56,17 @@ export const deleteNote = noteId => {
     return fetch(`http://localhost:8088/notes/${noteId}`, {
         method: "DELETE"
     })
-        .then(dispatchStateChangeEvent)
+        .then(dispatchStateChangeEvent);
+}
+
+// Edits the data in a JSON file, and then dispatches a custom event to the eventHub to refresh the notes array.
+export const editNote = (note) => {
+    return fetch(`http://localhost:8088/notes/${note.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(note)
+    })
+    .then(dispatchStateChangeEvent);
 }

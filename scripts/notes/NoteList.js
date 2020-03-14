@@ -1,4 +1,4 @@
-import { useNotes, deleteNote } from './noteDataProvider.js'
+import { useNotes, deleteNote, editNote } from './noteDataProvider.js'
 import { NoteComponent } from './Note.js';
 
 const eventHub = document.querySelector(".container")
@@ -75,21 +75,80 @@ eventHub.addEventListener("click", clickEvent => {
 })
 
 /*
-    Function that takes two arguments, an array of notes and an array of criminals,
-    and then loops over the array of notes, and for each note searches the entire array
-    of criminals and links corresponding criminals to notes by the two called key/value pairs.
+ *  Listens for a "click" event and dispatches the custom event, editDialogButtonDetailEvent,
+ *  to the eventHub to open a corresponding dialog box.
 */
-// const render = (arrayOfNoteObjects, arrayOfCriminalObjects) => {
-//     contentTarget.innerHTML = arrayOfNoteObjects.map(note => {
-//         const relatedCriminal = arrayOfCriminalObjects.find(criminal => criminal.id === note.criminalId)
+eventHub.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id.startsWith("editNote--")) {
+        const noteDateUnsplit = event.target.parentElement.querySelector(".note__timestamp").innerText;
+        const [dateprefix, noteDate] = noteDateUnsplit.split(": ")
+        const [prefix, chosenNote] = event.target.id.split("--");
+        const openDialogBox = new CustomEvent("editDialogButtonDetailEvent", {
+            detail: {
+                note: chosenNote,
+                date: noteDate
+            }
+        })
+        eventHub.dispatchEvent(openDialogBox);
+    }
+})
 
-//         return `
-//             <h2>Cold Case Notes</h2>
-//             <section class="note">
-//                 <h4>Note about ${relatedCriminal.name}</h4>
-//                 <p>${note.noteText}</p>
-//             </section>
-//         `
-//     }
-//     )
-// }
+// Listens for the custom event, editDialogButtonDetailEvent, to open a corresponding dialog box.
+eventHub.addEventListener("editDialogButtonDetailEvent", event => {
+    const dialogSiblingSelector = `#editNote--${event.detail.note}+dialog`;
+    const editDialog = document.querySelector(dialogSiblingSelector);
+    editDialog.showModal();
+    const setDate = (noteObjectDate) => {
+        const dialogDateNode = editDialog.getElementsByClassName("note--date--edit");
+        dialogDateNode[0].value = `${noteObjectDate}`;
+      }
+    setDate(event.detail.date);
+})
+/*
+ *  Listens for a "click" event and dispatches the custom event,
+ *  toggleNoteEvent, to the eventHub to hide a corresponding note.
+*/
+eventHub.addEventListener('click', clickEvent => {
+    if (clickEvent.target.id.startsWith('toggleNote--')) {
+        const [prefix, toggleNoteOption] = clickEvent.target.id.split('--');
+
+        const changeToggleOption = new CustomEvent('toggleNoteEvent', {
+            detail: {
+                toggleValue: toggleNoteOption
+            }
+        })
+
+        eventHub.dispatchEvent(changeToggleOption)
+    }
+})
+
+// Listens for the custom event, toggleNoteEvent, to hide a corresponding note (#note--${event.detail.toggleValue}).
+eventHub.addEventListener("toggleNoteEvent", event => {
+    const noteElement = document.getElementById(`note--${event.detail.toggleValue}`)
+    noteElement.classList.toggle("hidden");
+})
+
+// Listens for a "click" event and invokes the function, editNote, to replace the JSON data object with new values.
+eventHub.addEventListener(
+    "click", 
+    theEditEvent => {
+        if (event.target.id.startsWith("editNoteSubmit--")) {
+            const [prefix, editedNoteId, editedCriminalNoteId] = theEditEvent.target.id.split('--');
+            const contentTargetDate = document.getElementById(`note--date--edit--${editedNoteId}`).value;
+            const contentTargetSuspect = document.getElementById(`note--suspect--edit--${editedNoteId}`).value;
+            const contentTargetNoteText = document.getElementById(`note--text--edit--${editedNoteId}`).value;
+
+            const editedNoteObject = {
+                "date": contentTargetDate,
+                "suspect": contentTargetSuspect,
+                "noteText": contentTargetNoteText,
+                "criminalId": editedCriminalNoteId,
+                "id": editedNoteId
+            }
+        editNote(editedNoteObject);
+        document.getElementById(`details--${editedNoteId}`).close()
+        }
+    }
+)
