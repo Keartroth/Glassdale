@@ -23,7 +23,7 @@ const render = convictionsCollection => {
     `;
 }
 
-// Renders a list of options in the dropdown menue element (#crimeSelect).
+// Invokes render which renders a list of options in the dropdown menue element (#crimeSelect).
 export const ConvictionSelect = () => {
     const convictions = useConvictions();
     render(convictions);

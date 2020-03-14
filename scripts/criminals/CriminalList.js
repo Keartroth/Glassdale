@@ -17,7 +17,7 @@ eventHub.addEventListener("changeConviction", event => {
     }
 })
 
-// Listen for the refresh crime list custom event you dispatched in ConvictionSelect.
+// Listen for the refresh crime list custom event, crimeWasChosen, that was dispatched in ConvictionSelect.
 eventHub.addEventListener("crimeWasChosen", event => {
     if (event.detail.crime === "0") {
         criminalList();
@@ -25,7 +25,7 @@ eventHub.addEventListener("crimeWasChosen", event => {
 })
 
 // Renders individual criminalObjects onto the DOM by being called in a for/of loop.
-const render = criminalObject => {
+const criminalRender = criminalObject => {
     targetContentElement.innerHTML += criminal(criminalObject);
 }
 
@@ -33,7 +33,7 @@ const render = criminalObject => {
 const filterRender = (filteredArray) => {
     targetContentElement.innerHTML = "";
     for (const arrayObject of filteredArray) {
-        render(arrayObject);
+        criminalRender(arrayObject);
         dialogElement(arrayObject);
     }
 }
@@ -43,7 +43,7 @@ export const criminalList = () => {
     targetContentElement.innerHTML = "";
     const appStateCriminals = useCriminals();
     for (const criminalObject of appStateCriminals) {
-        render(criminalObject);
+        criminalRender(criminalObject);
         dialogElement(criminalObject)
     }
 }

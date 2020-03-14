@@ -17,16 +17,14 @@ export const getNotes = () => {
         .then(
             parsedNotes => {
             notes = parsedNotes
-        }
+            }
         );
-
 }
 
 // Dispatches noteStateChanged to the eventHub so that getNotes will update the array notes.
 export const dispatchStateChangeEvent = () => {
-    const noteStateChangedEvent = new CustomEvent("noteStateChanged")
-
-    eventHub.dispatchEvent(noteStateChangedEvent)
+    const noteStateChangedEvent = new CustomEvent("noteStateChanged");
+    eventHub.dispatchEvent(noteStateChangedEvent);
 }
 /*
 *   Listens for the custom event, noteStateChanged, on the eventHub
@@ -47,7 +45,6 @@ export const saveNote = note => {
         },
         body: JSON.stringify(note)
     })
-    // .then(getNotes)
     .then(dispatchStateChangeEvent);
 }
 

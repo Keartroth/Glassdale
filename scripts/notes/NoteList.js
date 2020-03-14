@@ -16,7 +16,7 @@ export const noteListButton = () => {
  *  and then loops over the array of notes, and for each note searches the entire array
  *  of criminals and links corresponding criminals to notes by the two called key/value pairs.
 */
-const render = notes => {
+const noteRender = notes => {
     contentTarget.innerHTML = `
         <h2 id="note__heading">Cold Case Notes</h2>
         ${
@@ -29,7 +29,7 @@ const render = notes => {
 export const NoteList = () => {
     const notes = useNotes();
 
-    render(notes);
+    noteRender(notes);
 }
 /*
 *   Listens for a "click" event and dispatches the custom event, renderAllNotesToDOM, to the eventHub
@@ -68,7 +68,7 @@ eventHub.addEventListener("click", clickEvent => {
        deleteNote(id).then(
            () => {
                const updatedNotes = useNotes()
-               render(updatedNotes)
+               noteRender(updatedNotes)
            }
        )
     }
