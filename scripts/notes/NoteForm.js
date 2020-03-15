@@ -1,5 +1,5 @@
 import { saveNote } from "./noteDataProvider.js";
-import { useCriminals } from "../criminals/criminalDataProvider.js";
+import { useCriminals, findCriminalID } from "../criminals/criminalDataProvider.js";
 
 const contentTargetElement = document.querySelector(".noteFormContainer");
 /*
@@ -19,15 +19,6 @@ const noteRender = () => {
         <button id="saveNote">Save Note</button>
     </form>
     `
-}
-/*
- *  A function, findCriminalID, that returns the value from the key/value pair in a criminal object ("criminalId": X,)
- *  in order to store the criminal's unknown number in the new note added when a user clicks the Save Note button. 
-*/
-const findCriminalID = (arrayOfCriminalObjects, criminalName) => {
-    //Declair a variable to store the final value, then map over the criminal array in order to find a matching value, then return it.
-    const criminalIdValue = arrayOfCriminalObjects.filter(criminal => criminal.name === criminalName);
-    return criminalIdValue[0].id;
 }
 /*
  *  Adds a "click" event listener to the button element (#saveNote) that collects the user entered data 

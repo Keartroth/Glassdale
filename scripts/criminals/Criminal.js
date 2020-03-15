@@ -2,6 +2,8 @@
 *   Exports the function, criminal, to give structure to criminal elements
 *   when looped through an array of criminal objects.
 */
+const eventHub = document.querySelector(".container");
+const targetListContainerContentElement = document.querySelector(".listContainer");
 
 export const criminal = (criminalObject) => {
     return`
@@ -20,3 +22,20 @@ export const criminal = (criminalObject) => {
     </div>
     `
 }
+/*
+ *  Listens for a "click" event and dispatches the custom event, dialogButtonDetailEvent,
+ *  to the eventHub to open a corresponding dialog box.
+*/
+targetListContainerContentElement.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id.startsWith("associates--")) {
+        const [prefix, chosenCriminal] = event.target.id.split("--");
+        const openDialogBox = new CustomEvent("dialogButtonDetailEvent", {
+            detail: {
+                criminal: chosenCriminal
+            }
+        })
+        eventHub.dispatchEvent(openDialogBox);
+    }
+})

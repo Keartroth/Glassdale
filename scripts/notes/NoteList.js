@@ -1,5 +1,6 @@
 import { useNotes, deleteNote, editNote } from './noteDataProvider.js';
 import { NoteComponent } from './Note.js';
+import { EditNoteDialogElement } from './NoteDialog.js';
 
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".notesContainer");
@@ -12,9 +13,8 @@ export const noteListButton = () => {
     `
 }
 /*
- *  Function that takes two arguments, an array of notes and an array of criminals,
- *  and then loops over the array of notes, and for each note searches the entire array
- *  of criminals and links corresponding criminals to notes by the two called key/value pairs.
+ *  Function that takes an array of note objects and for each note renders a note component, and then
+ *  calls EditNoteDialogElement and renders a dialog box component within the note as an edit form.
 */
 const noteRender = notes => {
     contentTarget.innerHTML = `
@@ -22,7 +22,10 @@ const noteRender = notes => {
         ${
             notes.map(note => NoteComponent(note)).join("")
         }
-    `
+    `;
+    for (const noteObject of notes) {
+        EditNoteDialogElement(noteObject);
+    }
 }
 
 // Function that calls useNotes and useCriminals for both arrays and passes the arrays into render as the parameters to the argument.
@@ -152,3 +155,15 @@ eventHub.addEventListener(
         }
     }
 )
+
+// Listens for a "click" event and closes a corresponding dialog box.
+contentTarget.addEventListener(
+    "click", 
+    event => {
+    if (event.target.id.startsWith("close-")) {
+        const [prefix, chosenDialog] = event.target.id.split("-");
+        const theDialogBoxID = `#details--${chosenDialog}`;
+        const theDialogElement = document.querySelector(theDialogBoxID);
+        theDialogElement.close();
+    }
+})

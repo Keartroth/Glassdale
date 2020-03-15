@@ -22,19 +22,19 @@ export const getNotes = () => {
 }
 
 // Dispatches noteStateChanged to the eventHub so that getNotes will update the array notes.
-export const dispatchStateChangeEvent = () => {
-    const noteStateChangedEvent = new CustomEvent("noteStateChanged");
-    eventHub.dispatchEvent(noteStateChangedEvent);
-}
+// export const dispatchStateChangeEvent = () => {
+//     const noteStateChangedEvent = new CustomEvent("noteStateChanged");
+//     eventHub.dispatchEvent(noteStateChangedEvent);
+// }
 /*
 *   Listens for the custom event, noteStateChanged, on the eventHub
 *   and calls the function getNotes to re-evaluate the notes array.
 */
-eventHub.addEventListener(
-    "noteStateChanged",
-    getNotes(),
-    NoteList()
-)
+// eventHub.addEventListener(
+//     "noteStateChanged",
+//     getNotes(),
+//     NoteList()
+// )
 
 // Converts a JavaScript string of criminals data to a JSON string, Posts it, and then dispatches a custom event to the eventHub to refresh the notes array.
 export const saveNote = note => {
