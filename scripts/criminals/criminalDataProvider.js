@@ -1,3 +1,8 @@
+/*
+ *   criminalDataProvider module that fetches an array of criminal objects, fills
+ *   the array, criminals, and then copies the array and exports it for use elsewhere.
+ */
+
 // Sets empty array for getCriminals to place the parsed data in.
 let criminals = [];
 

@@ -1,3 +1,8 @@
+/*
+ *   convictionsDataProvider module that fetches an array of note objects, fills
+ *   the array, convictions, and then copies the array and exports it for use elsewhere.
+ */
+
 // Sets empty array for getConvictions to place the parsed data in.
 let convictions = [];
 

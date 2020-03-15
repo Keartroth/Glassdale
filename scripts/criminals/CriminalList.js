@@ -2,6 +2,11 @@ import { useCriminals } from "./criminalDataProvider.js";
 import { criminal } from "./Criminal.js";
 import { dialogElement } from "./Dialog.js";
 
+/*
+ *   CriminalList component that renders a list of criminal HTML elements to .listContainer,
+ *   depending on whether the full array or a filtered array is invoked.
+ */
+
 const eventHub = document.querySelector(".container");
 const targetContentElement = document.querySelector(".listContainer");
 

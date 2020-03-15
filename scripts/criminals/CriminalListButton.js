@@ -1,3 +1,8 @@
+/*
+ *   CriminalListButton component that renders a Show All Criminals
+ *   HTML element which lists all criminals in the Glassdale PD API
+ */
+
 const eventHub = document.querySelector(".container");
 const targetHeaderContentElement = document.querySelector("#buttonContainer");
 

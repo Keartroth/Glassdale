@@ -1,6 +1,6 @@
 /*
-*   Exports the function, criminal, to give structure to criminal elements
-*   when looped through an array of criminal objects.
+*   Criminal component which exports the function, criminal, that renders HTML elements giving
+*   structure to criminal elements when looped through an array of criminal objects.
 */
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");

@@ -1,3 +1,8 @@
+/*
+ *   Dialog component that renders a dialog HTML element to each criminal element in .listContainer,
+ *   with an unordered list of known associates with the associates alibi.
+ */
+
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");
 
