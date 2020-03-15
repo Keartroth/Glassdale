@@ -1,0 +1,64 @@
+/* CSS file for the edit form dialog elements (.dialog--note) in each section (.note). */
+.button--close--edit {
+    bottom: 25px;
+    position: absolute;
+    right: 220px;
+}
+
+.dialog--note {
+    background-color: aliceblue;
+    border: 2px solid black;
+    font-family: monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    height: 255px;
+    justify-content: space-around;
+    padding: 20px;
+    position: relative;
+    width: 725px;
+}
+
+.editNoteSubmitButton {
+    bottom: 25px;
+    left: 220px;
+    position: absolute;
+}
+
+.note--date--edit {
+    height: 22px;
+    left: 120px;
+    position: absolute;
+}
+
+.note--date--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 26px;
+}
+
+.note--suspect--edit {
+    height: 16px;
+    left: 120px;
+    position: absolute;
+    top: 55px;
+    width: 200px;
+}
+
+.note--suspect--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 55px;
+}
+
+.note--text--edit {
+    height: 120px;
+    position: absolute;
+    top: 110px;
+    width: 720px;
+}
+
+.note--text--editLabel {
+    left: 0px;
+    position: absolute;
+    top: 85px;
+}
