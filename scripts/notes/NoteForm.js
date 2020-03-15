@@ -6,7 +6,7 @@ const contentTargetElement = document.querySelector(".noteFormContainer");
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
  *  when called by the function NoteForm.
 */
-const noteRender = () => {
+export const noteRender = () => {
     contentTargetElement.innerHTML = `
     <form id="noteForm">
         <label for="note--date">Date:</label>
@@ -19,6 +19,11 @@ const noteRender = () => {
         <button id="saveNote">Save Note</button>
     </form>
     `
+}
+
+// Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
+export const NoteForm = () => {
+    noteRender()
 }
 /*
  *  Adds a "click" event listener to the button element (#saveNote) that collects the user entered data 
@@ -41,8 +46,3 @@ contentTargetElement.addEventListener("click", clickEvent => {
         saveNote(newNote)
     }
 })
-
-// Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
-export const NoteForm = () => {
-    noteRender()
-}

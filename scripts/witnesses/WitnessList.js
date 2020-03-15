@@ -1,8 +1,8 @@
 import { witness } from "./Witness.js";
 import { useWitnesses } from "./witnessDataProvider.js";
 
-const targetListContainerContentElement = document.querySelector(".listContainer");
 const eventHub = document.querySelector(".container");
+const targetListContainerContentElement = document.querySelector(".listContainer");
 
 // Renders individual witnessObjects onto the DOM by being called in a for/of loop by the function witnessList.
 const render = witnessObject => {

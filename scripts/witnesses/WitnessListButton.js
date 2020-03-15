@@ -1,5 +1,5 @@
-const targetHeaderContentElement = document.querySelector("#buttonContainer");
 const eventHub = document.querySelector(".container");
+const targetHeaderContentElement = document.querySelector("#buttonContainer");
 
 // Inserts a button, Witness Statements, onto the DOM in the header element (.headerContainer).
 export const witnessListButton = () => {
