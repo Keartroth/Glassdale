@@ -11,7 +11,7 @@ const contentTargetElement = document.querySelector(".filters__crime");
 *   Provides the HTML structure for a list of options
 *   in the dropdown menue element (#crimeSelect) for ConvictionSelect.
 */
-const render = convictionsCollection => {
+const convictionsRender = convictionsCollection => {
     contentTargetElement.innerHTML = `
         <select class="dropdown" id="crimeSelect">
             <option value="0">Please select a crime...</option>
@@ -24,10 +24,10 @@ const render = convictionsCollection => {
     `;
 }
 
-// Invokes render which renders a list of options in the dropdown menue element (#crimeSelect).
+// Invokes convictionsRender which renders a list of options in the dropdown menue element (#crimeSelect).
 export const ConvictionSelect = () => {
     const convictions = useConvictions();
-    render(convictions);
+    convictionsRender(convictions);
 }
 /*
 *   Dispatches a custom event, either changeConviction or crimeWasChosen,
@@ -41,15 +41,15 @@ contentTargetElement.addEventListener(
             let chosenCrime = event.target.value;
             let changeConvictionEvent = new CustomEvent("changeConviction", {
                 detail: {
-                    crime: chosenCrime
+                    key: chosenCrime
                 }
             })
             eventHub.dispatchEvent(changeConvictionEvent);
         } else if (event.target.value === "0") {
             let chosenCrime = event.target.value;
-            let changeConvictionEvent = new CustomEvent("crimeWasChosen", {
+            let changeConvictionEvent = new CustomEvent("resetWasChosen", {
                 detail: {
-                    crime: chosenCrime
+                    key: chosenCrime
                 }
             })
             eventHub.dispatchEvent(changeConvictionEvent);

@@ -9,10 +9,13 @@ import { getWitnesses } from "./witnesses/witnessDataProvider.js";
 import { getNotes } from "./notes/noteDataProvider.js";
 import { noteListButton } from "./notes/NoteListButton.js";
 import { witnessListEventListener } from "./witnesses/WitnessList.js";
+import { OfficerSelect } from "./officers/OfficerSelect.js";
+import { getOfficers } from "./officers/officerDataProvider.js";
 
+NoteForm();
+noteListButton();
 getNotes();
 getWitnesses().then(witnessListButton).then(witnessListEventListener);
-NoteForm();
-getConvictions().then(ConvictionSelect);
 getCriminals().then(criminalList).then(criminalListButton);
-noteListButton();
+getConvictions().then(ConvictionSelect);
+getOfficers().then(OfficerSelect);

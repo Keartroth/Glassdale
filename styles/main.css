@@ -17,6 +17,8 @@
 }
 
 .filters {
+    display: flex;
+    justify-content: space-evenly;
     margin-bottom: 25px;
     margin-top: 25px;
 }
