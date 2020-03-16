@@ -1,5 +1,5 @@
 /*
- *   convictionsDataProvider module that fetches an array of note objects, fills
+ *   convictionsDataProvider module that fetches an array of conviction objects, fills
  *   the array, convictions, and then copies the array and exports it for use elsewhere.
  */
 

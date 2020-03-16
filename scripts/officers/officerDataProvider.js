@@ -1,3 +1,8 @@
+/*
+ *   officerDataProvider module that fetches an array of officer objects, fills the array, officers,
+ *   and then copies the array with the funciton, useOfficers, and exports it for use elsewhere.
+ */
+
 // Sets empty array for getOfficers to place the parsed data in.
 let officers = [];
 

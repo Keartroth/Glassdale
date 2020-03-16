@@ -2,6 +2,8 @@ import { useNotes } from './noteDataProvider.js';
 import { NoteComponent } from './Note.js';
 import { EditNoteDialogElement } from './NoteDialog.js';
 
+// NoteList module that renders a list of note HTML elements to .notesContainer.
+
 const eventHub = document.querySelector(".container");
 const notesContainerContentTargetElement = document.querySelector(".notesContainer");
 /*

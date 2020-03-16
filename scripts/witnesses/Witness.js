@@ -1,6 +1,6 @@
 /*
- *  Exports the function, witness, to give structure to witness card elements 
- *  when looped through an array of witness objects. 
+ *  Witness module with exports the function, witness, which returns a string of HTML to form 
+ *  witness card elements when looped through an array of witness objects. 
 */
 export const witness = (witnessObject) => {
     return`

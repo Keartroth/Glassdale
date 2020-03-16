@@ -1,3 +1,8 @@
+/*
+ *   NoteListButton module that renders a Show All Notes HTML
+ *   button element which lists all notes in the my notes.json API
+ */
+
 const eventHub = document.querySelector(".container");
 const targetHeaderContentElement = document.querySelector("#buttonContainer");
 

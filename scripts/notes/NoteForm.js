@@ -1,6 +1,9 @@
 import { saveNote } from "./noteDataProvider.js";
 import { useCriminals, findCriminalID } from "../criminals/criminalDataProvider.js";
-
+/*
+*   NoteForm component which exports the functions, noteRender & NoteForm, that renders HTML elements
+*   giving structure to note elements when looped through an array of note objects.
+*/
 const contentTargetElement = document.querySelector(".noteFormContainer");
 /*
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 

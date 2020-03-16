@@ -1,3 +1,8 @@
+/*
+ *   WitnessListButton module that renders a Witness Statements HTML button element
+ *   which lists all witnesses and their statements in the my Glassdale PD API
+ */
+
 const eventHub = document.querySelector(".container");
 const targetHeaderContentElement = document.querySelector("#buttonContainer");
 

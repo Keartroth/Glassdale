@@ -1,6 +1,13 @@
+/*
+*   Note component which exports the function, NoteComponent, that renders HTML elements giving
+*   structure to note elements when looped through an array of note objects.
+*/
 const eventHub = document.querySelector(".container");
 const notesContainerContentTargetElement = document.querySelector(".notesContainer");
-
+/*
+*   Exports the function, NoteComponent, that accepts an argument, 
+*   noteObject, and returns a string of an HTML note element.
+*/
 export const NoteComponent = (noteObject) => {
     return`
     <section class="note" id="note--${noteObject.id}">

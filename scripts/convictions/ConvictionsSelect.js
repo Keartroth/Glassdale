@@ -1,7 +1,7 @@
 import { useConvictions } from "./convictionsDataProvider.js";
 
 /*
- *   ConvictionSelect component that renders a select HTML element
+ *   ConvictionSelect module that renders a select HTML element
  *   which lists all convictions in the Glassdale PD API
  */
 

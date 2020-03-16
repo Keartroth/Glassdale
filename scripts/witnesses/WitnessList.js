@@ -1,6 +1,8 @@
 import { witness } from "./Witness.js";
 import { useWitnesses } from "./witnessDataProvider.js";
 
+// WitnessList module that renders a list of witness HTML elements to .listContainer.
+
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");
 

@@ -5,6 +5,7 @@
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");
 
+// Function, criminal, that accepts an argument, criminalObject, and returns a string of an HTML element.
 export const criminal = (criminalObject) => {
     return`
     <div id="${criminalObject.conviction}" class="criminal">

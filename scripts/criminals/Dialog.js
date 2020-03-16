@@ -5,8 +5,10 @@
 
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");
-
-// Renders the associate alibi dialog elements to the DOM for each specific criminal when being called in a for/of loop.
+/*
+* Exports the function, dialogElement, which renders the associate alibi dialog elements to the DOM
+*for each specific criminal when being called in a for/of loop.
+*/
 export const dialogElement = (criminalObject) => {
     let contentTargetElement = document.querySelector(`#criminal__information--${criminalObject.id}`);
     contentTargetElement.innerHTML +=`

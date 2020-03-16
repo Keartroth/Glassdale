@@ -1,5 +1,10 @@
 import { NoteList, noteRender } from "./NoteList.js";
 
+/*
+ *   noteDataProvider module that fetches an array of note objects, fills the array, notes,
+ *   and then copies the array with the funciton, useNotes, and exports it for use elsewhere.
+ */
+
 const eventHub = document.querySelector(".container");
 
 // Sets empty array for getNotes to place the parsed data in.

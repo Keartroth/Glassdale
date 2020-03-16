@@ -3,21 +3,21 @@ import { criminal } from "./Criminal.js";
 import { dialogElement } from "./Dialog.js";
 
 /*
- *   CriminalList component that renders a list of criminal HTML elements to .listContainer,
+ *   CriminalList module that renders a list of criminal HTML elements to .listContainer,
  *   depending on whether the full array or a filtered array is invoked.
  */
 
 const eventHub = document.querySelector(".container");
-const targetContentElement = document.querySelector(".listContainer");
+const targetListContainerContentElement = document.querySelector(".listContainer");
 
 // Renders individual criminalObjects onto the DOM by being called in a for/of loop.
 const criminalRender = criminalObject => {
-    targetContentElement.innerHTML += criminal(criminalObject);
+    targetListContainerContentElement.innerHTML += criminal(criminalObject);
 }
 
 // Render filtered criminals and dialog elements after filtering with changeConviction custom event.
 const filterRender = (filteredArray) => {
-    targetContentElement.innerHTML = "";
+    targetListContainerContentElement.innerHTML = "";
     for (const arrayObject of filteredArray) {
         criminalRender(arrayObject);
         dialogElement(arrayObject);
@@ -26,7 +26,7 @@ const filterRender = (filteredArray) => {
 
 // Render ALL criminals and dialog elements initally.
 export const criminalList = () => {
-    targetContentElement.innerHTML = "";
+    targetListContainerContentElement.innerHTML = "";
     const appStateCriminals = useCriminals();
     for (const criminalObject of appStateCriminals) {
         criminalRender(criminalObject);
