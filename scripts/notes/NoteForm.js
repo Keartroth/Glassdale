@@ -1,12 +1,15 @@
-import { saveNote } from "./noteDataProvider.js"
-import { useCriminals } from "../criminals/CriminalProvider.js"
-
-const contentTargetElement = document.querySelector(".noteFormContainer")
+import { saveNote } from "./noteDataProvider.js";
+import { useCriminals, findCriminalID } from "../criminals/criminalDataProvider.js";
+/*
+*   NoteForm component which exports the functions, noteRender & NoteForm, that renders HTML elements
+*   giving structure to note elements when looped through an array of note objects.
+*/
+const contentTargetElement = document.querySelector(".noteFormContainer");
 /*
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
  *  when called by the function NoteForm.
 */
-const render = () => {
+export const noteRender = () => {
     contentTargetElement.innerHTML = `
     <form id="noteForm">
         <label for="note--date">Date:</label>
@@ -16,18 +19,14 @@ const render = () => {
         <label for="note--text">Note:</label></br>
         <textarea id="note--text"></textarea></br>
 
+    </form>
         <button id="saveNote">Save Note</button>
-        </form>
     `
 }
-/*
- *  A function, findCriminalID, that returns the value from the key/value pair in a criminal object ("criminalId": X,)
- *  in order to store the criminal's unknown number in the new note added when a user clicks the Save Note button. 
-*/
-const findCriminalID = (arrayOfCriminalObjects, criminalName) => {
-    //Declair a variable to store the final value, then map over the criminal array in order to find a matching value, then return it.
-    const criminalIdValue = arrayOfCriminalObjects.filter(criminal => criminal.name === criminalName);
-    return criminalIdValue[0].id;
+
+// Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
+export const NoteForm = () => {
+    noteRender()
 }
 /*
  *  Adds a "click" event listener to the button element (#saveNote) that collects the user entered data 
@@ -50,8 +49,3 @@ contentTargetElement.addEventListener("click", clickEvent => {
         saveNote(newNote)
     }
 })
-
-// Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
-export const NoteForm = () => {
-    render()
-}

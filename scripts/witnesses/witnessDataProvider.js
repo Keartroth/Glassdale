@@ -1,3 +1,8 @@
+/*
+ *   witnessDataProvider module that fetches an array of witness objects, fills the array, witnesses,
+ *   and then copies the array with the funciton, useWitnesses, and exports it for use elsewhere.
+ */
+
 // Sets empty array for getWitnesses to place the parsed data in.
 let witnesses = [];
 

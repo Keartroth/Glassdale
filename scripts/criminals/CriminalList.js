@@ -1,71 +1,65 @@
-import { useCriminals } from "./CriminalProvider.js";
+import { useCriminals } from "./criminalDataProvider.js";
 import { criminal } from "./Criminal.js";
-import { dialogElement } from "./dialog.js";
+import { dialogElement } from "./Dialog.js";
 
-const targetHeaderContentElement = document.querySelector("#buttonContainer");
-const targetContentElement = document.querySelector(".listContainer");
-const eventHub = document.querySelector(".container");
 /*
-*   Listens for the custom event dispatched in ConvictionSelect
-*   to filter initial criminal list with the filterRender function.
-*/
-eventHub.addEventListener("changeConviction", event => {
-    if ("crime" in event.detail) {
-        const appStateCriminals = useCriminals();
-        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.conviction === event.detail.crime)
-        filterRender(matchingCriminals);
-    }
-})
+ *   CriminalList module that renders a list of criminal HTML elements to .listContainer,
+ *   depending on whether the full array or a filtered array is invoked.
+ */
 
-// Listen for the refresh crime list custom event you dispatched in ConvictionSelect.
-eventHub.addEventListener("crimeWasChosen", event => {
-    if (event.detail.crime === "0") {
-        criminalList();
-    }
-})
+const eventHub = document.querySelector(".container");
+const targetListContainerContentElement = document.querySelector(".listContainer");
 
 // Renders individual criminalObjects onto the DOM by being called in a for/of loop.
-const render = criminalObject => {
-    targetContentElement.innerHTML += criminal(criminalObject);
+const criminalRender = criminalObject => {
+    targetListContainerContentElement.innerHTML += criminal(criminalObject);
 }
 
-// Render filtered criminals and dialog elements after filtering with changeConviction custom event.
+// Render filtered criminals and dialog elements after filtering with changeConviction or changeOfficer custom event.
 const filterRender = (filteredArray) => {
-    targetContentElement.innerHTML = "";
+    targetListContainerContentElement.innerHTML = "";
     for (const arrayObject of filteredArray) {
-        render(arrayObject);
+        criminalRender(arrayObject);
         dialogElement(arrayObject);
     }
 }
 
 // Render ALL criminals and dialog elements initally.
 export const criminalList = () => {
-    targetContentElement.innerHTML = "";
+    targetListContainerContentElement.innerHTML = "";
     const appStateCriminals = useCriminals();
     for (const criminalObject of appStateCriminals) {
-        render(criminalObject);
+        criminalRender(criminalObject);
         dialogElement(criminalObject)
     }
 }
-
-// Inserts a button, Show All Criminals, onto the DOM in the header element (.headerContainer).
-export const criminalListButton = () => {
-    targetHeaderContentElement.innerHTML +=`
-    <button id="button--criminalList">Show All Criminals</button>
-    `
-}
 /*
-*   Listens for a "click" event and dispatches the custom event, witnessListButtonClicked, to the eventHub
-*   to set the article element (.listContainer) to empty and render a list of witnesses to the DOM in (.listContainer).
+*   Listens for the custom event dispatched in OfficerSelect, changeOfficer,
+*   to filter initial criminal list with the filterRender function.
 */
-eventHub.addEventListener(
-    "click", 
-    event => {
-    if (event.target.id === ("button--criminalList")) {
-        const criminalListGenerateEvent = new CustomEvent("criminalListGenerate");
-        eventHub.dispatchEvent(criminalListGenerateEvent);
+eventHub.addEventListener("changeOfficer", event => {
+        const appStateCriminals = useCriminals();
+        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.arrestingOfficer === event.detail.key)
+        filterRender(matchingCriminals);
+})
+
+/*
+*   Listens for the custom event dispatched in ConvictionSelect to filter
+*   initial criminal list with the filterRender function.
+*/
+eventHub.addEventListener("changeConviction", event => {
+        const appStateCriminals = useCriminals();
+        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.conviction === event.detail.key)
+        filterRender(matchingCriminals);
+})
+
+// Listen for the refresh crime list custom event, resetWasChosen, that was dispatched in ConvictionSelect or OfficerSelect.
+eventHub.addEventListener("resetWasChosen", event => {
+    if (event.detail.key === "0") {
+        criminalList();
     }
 })
+
 /*
  *  Listens for the custom event, criminalListGenerate, to set the article element (.listContainer) to empty, 
  *  and render a list of witnesses to the DOM in (.listContainer) by running the criminalList function. 
