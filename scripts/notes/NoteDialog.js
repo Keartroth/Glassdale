@@ -20,11 +20,11 @@ export const EditNoteDialogElement = (noteObject) => {
                 <textarea id="note--text--edit--${noteObject.id}" class="note--text--edit" required>${noteObject.noteText}</textarea></br>
             
             
-                <button id="editNoteSubmit--${noteObject.id}--${noteObject.criminalId}" class="editNoteSubmitButton">Submit Edited Note</button>
-                <button class="button--close button--close--edit" id="close-${noteObject.id}">Close Unedited</button>
             </form>
-        </dialog>
+                <button id="editNoteSubmit--${noteObject.id}--${noteObject.criminalId}" class="editNoteSubmitButton">Submit Edited Note</button>
 
+                <button class="button--close button--close--edit" id="close-${noteObject.id}">Close Unedited</button>
+        </dialog>
         `
 }
 // Listens for the custom event, editDialogButtonDetailEvent, to open a corresponding dialog box.

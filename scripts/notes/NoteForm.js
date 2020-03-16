@@ -19,8 +19,8 @@ export const noteRender = () => {
         <label for="note--text">Note:</label></br>
         <textarea id="note--text"></textarea></br>
 
-        <button id="saveNote">Save Note</button>
     </form>
+        <button id="saveNote">Save Note</button>
     `
 }
 
