@@ -45,14 +45,6 @@ contentTargetElement.addEventListener(
                 }
             })
             eventHub.dispatchEvent(changeConvictionEvent);
-        } else if (event.target.value === "0") {
-            let chosenCrime = event.target.value;
-            let changeConvictionEvent = new CustomEvent("resetWasChosen", {
-                detail: {
-                    key: chosenCrime
-                }
-            })
-            eventHub.dispatchEvent(changeConvictionEvent);
         }
     }
 })

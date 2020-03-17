@@ -45,14 +45,6 @@ filterOfficerContentTargetElement.addEventListener(
                 }
             })
             eventHub.dispatchEvent(changeOfficerEvent);
-        } else if (event.target.value === "0") {
-            let chosenOfficer = event.target.value;
-            let changeOfficerEvent = new CustomEvent("resetWasChosen", {
-                detail: {
-                    zeroKey: chosenOfficer
-                }
-            })
-            eventHub.dispatchEvent(changeOfficerEvent);
         }
     }
 })

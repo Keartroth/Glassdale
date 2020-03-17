@@ -31,7 +31,7 @@ export const FilterComponent = () => {
         selectedCrime = event.detail.key;
     })
 
-    eventHub.addEventListener("click", clickEvent => {
+    headerConentTargetElement.addEventListener("click", clickEvent => {
         if (clickEvent.target.id === "filterButton") {
             const convictionsStateCriminals = useCriminals();
             const selectedConvictionsCriminals = convictionsStateCriminals.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
