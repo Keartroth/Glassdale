@@ -16,7 +16,7 @@ const criminalRender = criminalObject => {
 }
 
 // Render filtered criminals and dialog elements after filtering with changeConviction or changeOfficer custom event.
-const filterRender = (filteredArray) => {
+export const filterRender = (filteredArray) => {
     targetListContainerContentElement.innerHTML = "";
     for (const arrayObject of filteredArray) {
         criminalRender(arrayObject);
@@ -34,37 +34,17 @@ export const criminalList = () => {
     }
 }
 /*
-*   Listens for the custom event dispatched in OfficerSelect, changeOfficer,
+*   Listens for the custom event dispatched in Filter, filterInitiated,
 *   to filter initial criminal list with the filterRender function.
 */
-eventHub.addEventListener("changeOfficer", event => {
-        const appStateCriminals = useCriminals();
-        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.arrestingOfficer === event.detail.key)
-        filterRender(matchingCriminals);
-})
-
-/*
-*   Listens for the custom event dispatched in ConvictionSelect to filter
-*   initial criminal list with the filterRender function.
-*/
-eventHub.addEventListener("changeConviction", event => {
-        const appStateCriminals = useCriminals();
-        const matchingCriminals = appStateCriminals.filter(currentCriminal => currentCriminal.conviction === event.detail.key)
-        filterRender(matchingCriminals);
-})
-
-// Listen for the refresh crime list custom event, resetWasChosen, that was dispatched in ConvictionSelect or OfficerSelect.
-eventHub.addEventListener("resetWasChosen", event => {
-    if (event.detail.key === "0") {
-        criminalList();
-    }
-})
-
+eventHub.addEventListener("filterInitiated", filterEvent => {
+    const filteredArrayOfCriminals = filterEvent.detail.filteredArray
+    filterRender(filteredArrayOfCriminals);
 /*
  *  Listens for the custom event, criminalListGenerate, to set the article element (.listContainer) to empty, 
  *  and render a list of witnesses to the DOM in (.listContainer) by running the criminalList function. 
 */
 eventHub.addEventListener("criminalListGenerate", event => {
     criminalList();
-
+})
 })
