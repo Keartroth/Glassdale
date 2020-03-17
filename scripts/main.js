@@ -11,6 +11,7 @@ import { noteListButton } from "./notes/NoteListButton.js";
 import { witnessListEventListener } from "./witnesses/WitnessList.js";
 import { OfficerSelect } from "./officers/OfficerSelect.js";
 import { getOfficers } from "./officers/officerDataProvider.js";
+import { filterListButton, FilterComponent } from "./criminals/Filter.js";
 
 NoteForm();
 noteListButton();
@@ -18,4 +19,5 @@ getNotes();
 getWitnesses().then(witnessListButton).then(witnessListEventListener);
 getCriminals().then(criminalList).then(criminalListButton);
 getConvictions().then(ConvictionSelect);
-getOfficers().then(OfficerSelect);
+getOfficers().then(OfficerSelect).then(filterListButton);
+FilterComponent();

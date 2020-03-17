@@ -39,15 +39,7 @@ filterOfficerContentTargetElement.addEventListener(
     if (event.target.id === "officerSelect") {
         if (event.target.value !== "0") {
             let chosenOfficer = event.target.value;
-            let changeOfficerEvent = new CustomEvent("changeOfficer", {
-                detail: {
-                    key: chosenOfficer
-                }
-            })
-            eventHub.dispatchEvent(changeOfficerEvent);
-        } else if (event.target.value === "0") {
-            let chosenOfficer = event.target.value;
-            let changeOfficerEvent = new CustomEvent("resetWasChosen", {
+            let changeOfficerEvent = new CustomEvent("officerSelected", {
                 detail: {
                     key: chosenOfficer
                 }

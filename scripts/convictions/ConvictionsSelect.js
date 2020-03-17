@@ -39,15 +39,7 @@ contentTargetElement.addEventListener(
     if (event.target.id === "crimeSelect") {
         if (event.target.value !== "0") {
             let chosenCrime = event.target.value;
-            let changeConvictionEvent = new CustomEvent("changeConviction", {
-                detail: {
-                    key: chosenCrime
-                }
-            })
-            eventHub.dispatchEvent(changeConvictionEvent);
-        } else if (event.target.value === "0") {
-            let chosenCrime = event.target.value;
-            let changeConvictionEvent = new CustomEvent("resetWasChosen", {
+            let changeConvictionEvent = new CustomEvent("crimeSelected", {
                 detail: {
                     key: chosenCrime
                 }
