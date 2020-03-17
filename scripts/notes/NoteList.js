@@ -1,4 +1,4 @@
-import { useNotes } from './noteDataProvider.js';
+import { useNotes, getNotes } from './noteDataProvider.js';
 import { NoteComponent } from './Note.js';
 import { EditNoteDialogElement } from './NoteDialog.js';
 
@@ -10,29 +10,37 @@ const notesContainerContentTargetElement = document.querySelector(".notesContain
  *  Function that takes an array of note objects and for each note renders a note component, and then
  *  calls EditNoteDialogElement and renders a dialog box component within the note as an edit form.
 */
-export const noteRender = notes => {
-    notesContainerContentTargetElement.innerHTML = `
-        <h2 id="note__heading">Cold Case Notes</h2>
+export const noteRender = () => {
+    getNotes().then(() => {
+        const notes = useNotes();
+
+        notesContainerContentTargetElement.innerHTML = `
         ${
-            notes.map(note => NoteComponent(note)).join("")
+            notes.map(
+                currentNoteObject => {
+                    return NoteComponent(currentNoteObject);
+                }
+            ).join("")
         }
-    `;
-    for (const noteObject of notes) {
-        EditNoteDialogElement(noteObject);
-    }
-}
-
-// Function that calls useNotes passes the array into render as the parameter to the argument.
-export const NoteList = () => {
-    const notes = useNotes();
-
-    noteRender(notes);
+    `
+    notes.forEach(event = (noteObject) => {
+        EditNoteDialogElement(noteObject);  
+    })
+})
 }
 /*
  *  Listens for the custom event, renderAllNotesToDOM, to render a list of notes to the DOM
  *  in the section element (.notesContainer) by running the NoteList function.
 */
 eventHub.addEventListener("renderAllNotesToDOM", event => {
-    NoteList();
+    noteRender();
 
 })
+/*
+*   Listens for the custom event, noteStateChanged, on the eventHub
+*   and calls the function getNotes to re-evaluate the notes array.
+*/
+eventHub.addEventListener("noteStateChanged", event => {
+    noteRender();
+}
+)

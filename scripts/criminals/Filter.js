@@ -8,12 +8,12 @@ const eventHub = document.querySelector(".container");
 const headerConentTargetElement = document.querySelector(".headerContainer");
 const filtersContentTargetElement = document.querySelector(".filter__button");
 
-let selectedOfficer = null
-let selectedCrime = null
+let selectedOfficer = "0";
+let selectedCrime = "0";
 
 // Inserts a button, Filter, onto the DOM in the header element (.filters).
 export const filterListButton = () => {
-    filtersContentTargetElement.innerHTML +=`
+    filtersContentTargetElement.innerHTML += `
     <button id="filterButton">Filter by Selected Values</button>
     `
 }
@@ -22,6 +22,8 @@ export const filterListButton = () => {
  *   officerSelected & crimeSelected, filter useCriminals with each value and return an array of criminal objects.
  */
 export const FilterComponent = () => {
+    // selectedOfficer = null;
+    // selectedCrime = null;
 
     eventHub.addEventListener("officerSelected", event => {
         selectedOfficer = event.detail.key;
@@ -33,16 +35,49 @@ export const FilterComponent = () => {
 
     headerConentTargetElement.addEventListener("click", clickEvent => {
         if (clickEvent.target.id === "filterButton") {
-            const convictionsStateCriminals = useCriminals();
-            const selectedConvictionsCriminals = convictionsStateCriminals.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
-            const filteredArray = selectedConvictionsCriminals.filter(currentCriminal => currentCriminal.arrestingOfficer === selectedOfficer)
+            if (selectedOfficer === "0" || selectedCrime === "0") {
+                if (selectedOfficer === "0" && selectedCrime !== "0") {
+                    const unfilteredArray = useCriminals();
+                    const filteredByConvictionArray = unfilteredArray.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
 
-            const message = new CustomEvent("filterInitiated", {
-                detail: {
-                    filteredArray: filteredArray,
+                    const message = new CustomEvent("filterInitiated", {
+                        detail: {
+                            filteredArray: filteredByConvictionArray
+                        }
+                    })
+                    eventHub.dispatchEvent(message);
+                } else if (selectedOfficer !== "0" && selectedCrime === "0") {
+                    const unfilteredArray = useCriminals();
+                    const filteredByofficerArray = unfilteredArray.filter(currentCriminal => currentCriminal.arrestingOfficer === selectedOfficer)
+
+                    const message = new CustomEvent("filterInitiated", {
+                        detail: {
+                            filteredArray: filteredByofficerArray
+                        }
+                    })
+                    eventHub.dispatchEvent(message);
+                } else if (selectedOfficer === "0" || selectedCrime === "0") {
+                    const unfilteredArray = useCriminals();
+
+                    const message = new CustomEvent("filterInitiated", {
+                        detail: {
+                            filteredArray: unfilteredArray,
+                        }
+                    })
+                    eventHub.dispatchEvent(message);
                 }
-            })
-            eventHub.dispatchEvent(message);
+            } else {
+                const unfilteredArray = useCriminals();
+                const filteredByConvictionsArray = unfilteredArray.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
+                const filteredByBothArray = filteredByConvictionsArray.filter(currentCriminal => currentCriminal.arrestingOfficer === selectedOfficer)
+
+                const message = new CustomEvent("filterInitiated", {
+                    detail: {
+                        filteredArray: filteredByBothArray,
+                    }
+                })
+                eventHub.dispatchEvent(message);
+            }
         }
     })
 }

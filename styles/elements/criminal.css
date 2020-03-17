@@ -9,6 +9,7 @@
     background-color: rgb(221, 221, 221);
     border: 1px solid black;
     height: auto;
+    margin: 1rem;
     min-width: 225px;
     text-transform: capitalize;
     width: 20%;
@@ -27,5 +28,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: auto;
+    margin: 5rem auto;
 }

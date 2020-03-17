@@ -5,6 +5,12 @@
     padding: 1em;
 }
 
+#button--showNoteForm {
+    font-family: monospace;
+    margin: auto;
+    padding: 1em;
+}
+
 .deleteNoteButton {
     bottom: 15px;
     display: inline-block;
