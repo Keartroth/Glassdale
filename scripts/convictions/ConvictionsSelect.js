@@ -37,7 +37,7 @@ contentTargetElement.addEventListener(
     "change", 
     event => {
     if (event.target.id === "crimeSelect") {
-        if (event.target.value !== "0") {
+        // if (event.target.value !== "0") {
             let chosenCrime = event.target.value;
             let changeConvictionEvent = new CustomEvent("crimeSelected", {
                 detail: {
@@ -46,5 +46,5 @@ contentTargetElement.addEventListener(
             })
             eventHub.dispatchEvent(changeConvictionEvent);
         }
-    }
+    // }
 })

@@ -40,11 +40,11 @@ export const criminalList = () => {
 eventHub.addEventListener("filterInitiated", filterEvent => {
     const filteredArrayOfCriminals = filterEvent.detail.filteredArray
     filterRender(filteredArrayOfCriminals);
+})
 /*
  *  Listens for the custom event, criminalListGenerate, to set the article element (.listContainer) to empty, 
  *  and render a list of witnesses to the DOM in (.listContainer) by running the criminalList function. 
 */
 eventHub.addEventListener("criminalListGenerate", event => {
     criminalList();
-})
 })

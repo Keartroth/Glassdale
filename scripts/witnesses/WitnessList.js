@@ -25,8 +25,6 @@ const witnessList = () => {
  *  Listens for the custom event, witnessListGenerate, to set the article element (.listContainer) to empty,
  *  and render a list of witnesses to the DOM in (.listContainer).
 */
-export const witnessListEventListener = () => {
-    eventHub.addEventListener("witnessListGenerate", event => {
-        witnessList()
-    })
-}
+eventHub.addEventListener("witnessListGenerate", event => {
+    witnessList()
+})

@@ -4,12 +4,16 @@ import { useCriminals, findCriminalID } from "../criminals/criminalDataProvider.
 *   NoteForm component which exports the functions, noteRender & NoteForm, that renders HTML elements
 *   giving structure to note elements when looped through an array of note objects.
 */
+const eventHub = document.querySelector(".container");
 const contentTargetElement = document.querySelector(".noteFormContainer");
+
+let visibility = false;
 /*
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
  *  when called by the function NoteForm.
-*/
+ */
 export const noteRender = () => {
+    contentTargetElement.classList.add("hidden")
     contentTargetElement.innerHTML = `
     <form id="noteForm">
         <label for="note--date">Date:</label>
@@ -47,5 +51,17 @@ contentTargetElement.addEventListener("click", clickEvent => {
             "criminalId": relatedCriminalId
         }
         saveNote(newNote)
+    }
+})
+
+// Listens for a "click" event listener on the button element (#showNoteForm) which toggles the NoteForm visibility.
+eventHub.addEventListener("noteFormButtonClicked", customEvent => {
+    visibility = !visibility
+
+    if (visibility) {
+        contentTargetElement.classList.remove("hidden")
+    }
+    else {
+        contentTargetElement.classList.add("hidden")
     }
 })
