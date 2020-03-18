@@ -12,11 +12,13 @@ import { filterListButton, FilterComponent } from "./criminals/Filter.js";
 import { criminalListButton } from "./criminals/CriminalListButton.js";
 import { DisplayNoteFormButton } from "./notes/NoteFormButton.js";
 import "./witnesses/WitnessList.js";
+import { dateInputFilter } from "./criminals/dateInputFilter.js";
 
 DisplayNoteFormButton();
 noteListButton();
 witnessListButton();
 criminalListButton();
+dateInputFilter();
 filterListButton();
 NoteForm();
 getWitnesses();

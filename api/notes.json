@@ -8,18 +8,25 @@
       "id": 1
     },
     {
-      "date": "1984-01-10",
-      "suspect": "Michael Eugene Carroll, Jr",
-      "noteText": "Michael Carroll was born on this day; clearly he is the culprit!\n\nNOPE NOPE NOPE NOPE NOPE NOPE! This time it will close!!!! IT DID IT!\n\nDo it again!!! AND AGAIN! Will it work in a form? Maybe...",
+      "date": "2020-03-17",
+      "suspect": "Hilario Leuschke",
+      "noteText": "Previously incarcerated for extortion and let out of jail in 2015 (time frame of crimes?).\nArresting officer is Lilian Pfannerstill. Has a family member on the force, Lazaro Leuschke. I accused Hilario, and he was not the culprit.",
       "criminalId": "9001",
       "id": 2
     },
     {
-      "date": "2020-03-16",
-      "suspect": "Ericka Barton",
-      "noteText": "Testing a test! This is the real test here! THIS IS THE REEEEEEEAL KILLER! Can I rerender with a save? I think so! I am a wizard ('s apprentice)!",
+      "date": "2020-03-17",
+      "suspect": "Margaret Debrowski",
+      "noteText": "Maggie has been in a poor mood since I have begun the case. She was intimately aware of the individuals that were targeted and why some were not targeted repeatedly. She drives a pickup truck and uses the word quickly.",
       "criminalId": "89",
       "id": 3
+    },
+    {
+      "date": "2020-03-17",
+      "suspect": "Kieran Mayert",
+      "noteText": "Arrested for Grand Theft, and released shortly before the time of the crimes. Only alibi is cooking dinner.",
+      "criminalId": 41,
+      "id": 4
     }
   ]
 }

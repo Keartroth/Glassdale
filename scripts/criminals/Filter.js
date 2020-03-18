@@ -22,8 +22,6 @@ export const filterListButton = () => {
  *   officerSelected & crimeSelected, filter useCriminals with each value and return an array of criminal objects.
  */
 export const FilterComponent = () => {
-    // selectedOfficer = null;
-    // selectedCrime = null;
 
     eventHub.addEventListener("officerSelected", event => {
         selectedOfficer = event.detail.key;
