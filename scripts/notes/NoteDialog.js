@@ -10,7 +10,7 @@ const notesContainerContentTargetElement = document.querySelector(".notesContain
 export const EditNoteDialogElement = (noteObject) => {
     const contentTargetElement = document.querySelector(`#note--${noteObject.id}`);
     contentTargetElement.innerHTML += `
-        <dialog class="dialog--note" id="details--${noteObject.id}">
+        <dialog class="dialog--note" id="note--details--${noteObject.id}">
             <form>
                 <label for="note--date--edit--${noteObject.id}" class="note--date--editLabel">Date:</label>
                 <input type="date" id="note--date--edit--${noteObject.id}" class="note--date--edit" required></br>
@@ -63,7 +63,7 @@ notesContainerContentTargetElement.addEventListener(
                 }
             })
             eventHub.dispatchEvent(theEditNoteEvent);
-            document.getElementById(`details--${editedNoteId}`).close()
+            document.getElementById(`note--details--${editedNoteId}`).close()
         }
     }
 )
@@ -74,7 +74,7 @@ notesContainerContentTargetElement.addEventListener(
     event => {
     if (event.target.id.startsWith("close-")) {
         const [prefix, chosenDialog] = event.target.id.split("-");
-        const theDialogBoxID = `#details--${chosenDialog}`;
+        const theDialogBoxID = `#note--details--${chosenDialog}`;
         const theDialogElement = document.querySelector(theDialogBoxID);
         theDialogElement.close();
     }

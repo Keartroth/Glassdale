@@ -21,15 +21,15 @@ export const filterListButton = () => {
 }
 /*
  *   FilterComponent function that sets three event listeners which capture the values of the custom events, 
- *   officerSelected & crimeSelected, filter useCriminals with each value and return an array of criminal objects.
+ *   officerSelectedDetailEvent & crimeSelectedDetailEvent, filter useCriminals with each value and return an array of criminal objects.
  */
 export const FilterComponent = () => {
 
-    eventHub.addEventListener("officerSelected", event => {
+    eventHub.addEventListener("officerSelectedDetailEvent", event => {
         selectedOfficer = event.detail.key;
     })
 
-    eventHub.addEventListener("crimeSelected", event => {
+    eventHub.addEventListener("crimeSelectedDetailEvent", event => {
         selectedCrime = event.detail.key;
     })
 

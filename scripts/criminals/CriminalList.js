@@ -1,6 +1,6 @@
 import { useCriminals } from "./criminalDataProvider.js";
 import { criminal } from "./Criminal.js";
-import { dialogElement, initializeDialogCloseEvent } from "./Dialog.js";
+import { dialogElement } from "./Dialog.js";
 
 /*
  *   CriminalList module that renders a list of criminal HTML elements to .listContainer,
@@ -21,7 +21,6 @@ export const filterRender = (filteredArray) => {
     for (const arrayObject of filteredArray) {
         criminalRender(arrayObject);
         dialogElement(arrayObject);
-        initializeDialogCloseEvent();
     }
 }
 
@@ -32,7 +31,6 @@ export const criminalList = () => {
     for (const criminalObject of appStateCriminals) {
         criminalRender(criminalObject);
         dialogElement(criminalObject)
-        initializeDialogCloseEvent();
     }
 }
 /*

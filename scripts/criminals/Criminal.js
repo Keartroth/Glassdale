@@ -1,6 +1,6 @@
 /*
 *   Criminal component which exports the function, criminal, that renders HTML elements giving
-*   structure to criminal elements when looped through an array of criminal objects.
+*   structure to criminal cards when looped through an array of criminal objects.
 */
 const eventHub = document.querySelector(".container");
 const targetListContainerContentElement = document.querySelector(".listContainer");
@@ -19,12 +19,15 @@ export const criminal = (criminalObject) => {
             </p>
 
             <button id="associates--${criminalObject.id}">Associate Alibis</button>
-        </div>
+
+            </div>
+
+            <button id="hideCriminal--${criminalObject.id}">Remove Note From List</button>
     </div>
     `
 }
 /*
- *  Listens for a "click" event and dispatches the custom event, dialogButtonDetailEvent,
+ *  Listens for a "click" event and dispatches the custom event, dialogButtonClickedDetailEvent,
  *  to the eventHub to open a corresponding dialog box.
 */
 targetListContainerContentElement.addEventListener(
@@ -32,11 +35,20 @@ targetListContainerContentElement.addEventListener(
     event => {
     if (event.target.id.startsWith("associates--")) {
         const [prefix, chosenCriminal] = event.target.id.split("--");
-        const openDialogBox = new CustomEvent("dialogButtonDetailEvent", {
+        const openDialogBox = new CustomEvent("dialogButtonClickedDetailEvent", {
             detail: {
                 criminal: chosenCriminal
             }
         })
         eventHub.dispatchEvent(openDialogBox);
     }
+})
+/*
+*   Listens for a "click" event listener on the button element that starts with (#hideCriminal--),
+*   which sets the corresponding criminal card to display: none, by adding the class "hidden".
+*/
+
+targetListContainerContentElement.addEventListener("click", event => {
+    if (event.target.id.startsWith("hideCriminal--"))
+    event.target.parentElement.classList.add("hidden")
 })

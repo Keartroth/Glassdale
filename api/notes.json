@@ -3,8 +3,8 @@
     {
       "date": "2020-03-10",
       "suspect": "Everyone",
-      "noteText": "This is the beginning of my case. Currently, everyone is a suspect. EVEN ME!",
-      "criminalId": 1,
+      "noteText": "This is the beginning of my case. Currently, everyone is a suspect. EVEN ME! And yet I can't figure it out. . .",
+      "criminalId": "1",
       "id": 1
     },
     {

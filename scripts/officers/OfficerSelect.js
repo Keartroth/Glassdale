@@ -38,7 +38,7 @@ filterOfficerContentTargetElement.addEventListener(
     event => {
     if (event.target.id === "officerSelect") {
             let chosenOfficer = event.target.value;
-            let changeOfficerEvent = new CustomEvent("officerSelected", {
+            let changeOfficerEvent = new CustomEvent("officerSelectedDetailEvent", {
                 detail: {
                     key: chosenOfficer
                 }
