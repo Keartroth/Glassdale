@@ -33,13 +33,15 @@ eventHub.addEventListener("dialogButtonDetailEvent", event => {
 })
 
 // Listens for a "click" event and closes a corresponding dialog box.
-targetListContainerContentElement.addEventListener(
-    "click", 
-    event => {
-    if (event.target.id.startsWith("close-")) {
-        const [prefix, chosenDialog] = event.target.id.split("-");
-        const theDialogBoxID = `#details--${chosenDialog}`;
-        const theDialogElement = document.querySelector(theDialogBoxID);
-        theDialogElement.close();
-    }
-})
+export const initializeDialogCloseEvent = () => {
+    targetListContainerContentElement.addEventListener(
+        "click", 
+        event => {
+        if (event.target.id.startsWith("close-")) {
+            const [prefix, chosenDialog] = event.target.id.split("-");
+            const theDialogBoxID = `#details--${chosenDialog}`;
+            const theDialogElement = document.querySelector(theDialogBoxID);
+            theDialogElement.close();
+        }
+    })
+}

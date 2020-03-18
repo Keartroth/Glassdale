@@ -9,17 +9,17 @@ const targetHeaderContentElement = document.querySelector(".filters__incarcerati
 // Function, dateInputFilter, that returns a string of input and label HTML elements and inserts them at (.filters__incarceration).
 export const dateInputFilter = () => {
     targetHeaderContentElement.innerHTML =`
-    <label for="filter--startDate">Incarceration Start</label>
+    <label for="filter--startDate">Excluding Incarceration Start</label>
     <input type="date" id="filter--startDate" min="1982-04-20" required>
-    <label for="filter--endDate">Incarceration End</label>
-    <input type="date" id="filter--endDate" max="2029-01-02" required>
+    <label for="filter--endDate">Excluding Incarceration End</label>
+    <input type="date" id="filter--endDate" max="2029-01-03" required>
     `;
     
     const targetFilterStartDateElement = document.querySelector("#filter--startDate");
     const targetFilterEndDateElement = document.querySelector("#filter--endDate");
 
     targetFilterStartDateElement.value = "1982-04-20";
-    targetFilterEndDateElement.value = "2029-01-02";
+    targetFilterEndDateElement.value = "2029-01-03";
 }
 /*
  *  Listens for a "change" event at inputs (#filter--startdDate & #filter--endDate) and dispatches the custom event,
