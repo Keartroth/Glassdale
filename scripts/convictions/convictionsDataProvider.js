@@ -11,7 +11,7 @@ export const useConvictions = () => {
     return convictions.slice();
 }
 
-// Fetches a JSON string of criminals data and then converts it to a JavaScript array.
+// Fetches a JSON string of criminals data, converts it to a JavaScript array named convictions.
 export const getConvictions = () => {
     return fetch("https://criminals.glassdale.us/crimes")
         .then(response => response.json())
@@ -19,5 +19,5 @@ export const getConvictions = () => {
             parsedConvictions => {
                 convictions = parsedConvictions
             }
-        );
+        )
 }
