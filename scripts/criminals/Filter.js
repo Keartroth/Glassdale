@@ -10,6 +10,8 @@ const filtersContentTargetElement = document.querySelector(".filter__button");
 
 let selectedOfficer = "0";
 let selectedCrime = "0";
+let selectedStartDate = "1982-04-20";
+let selectedEndDate = "2029-01-03";
 
 // Inserts a button, Filter, onto the DOM in the header element (.filters).
 export const filterListButton = () => {
@@ -22,8 +24,6 @@ export const filterListButton = () => {
  *   officerSelected & crimeSelected, filter useCriminals with each value and return an array of criminal objects.
  */
 export const FilterComponent = () => {
-    // selectedOfficer = null;
-    // selectedCrime = null;
 
     eventHub.addEventListener("officerSelected", event => {
         selectedOfficer = event.detail.key;
@@ -33,35 +33,46 @@ export const FilterComponent = () => {
         selectedCrime = event.detail.key;
     })
 
+    eventHub.addEventListener("incarcerationDateChosenDetailEvent", event => {
+        selectedStartDate = event.detail.incarcerationStart;
+        selectedEndDate = event.detail.incarcerationEnd;
+    })
+
     headerConentTargetElement.addEventListener("click", clickEvent => {
         if (clickEvent.target.id === "filterButton") {
             if (selectedOfficer === "0" || selectedCrime === "0") {
                 if (selectedOfficer === "0" && selectedCrime !== "0") {
                     const unfilteredArray = useCriminals();
                     const filteredByConvictionArray = unfilteredArray.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
+                    const filteredByStartDateArray = filteredByConvictionArray.filter(currentCriminal => currentCriminal.incarceration.end >= selectedStartDate)
+                    const finalFilteredArray = filteredByStartDateArray.filter(currentCriminal => currentCriminal.incarceration.end <= selectedEndDate)
 
                     const message = new CustomEvent("filterInitiated", {
                         detail: {
-                            filteredArray: filteredByConvictionArray
+                            filteredArray: finalFilteredArray
                         }
                     })
                     eventHub.dispatchEvent(message);
                 } else if (selectedOfficer !== "0" && selectedCrime === "0") {
                     const unfilteredArray = useCriminals();
                     const filteredByofficerArray = unfilteredArray.filter(currentCriminal => currentCriminal.arrestingOfficer === selectedOfficer)
+                    const filteredByStartDateArray = filteredByofficerArray.filter(currentCriminal => currentCriminal.incarceration.end >= selectedStartDate)
+                    const finalFilteredArray = filteredByStartDateArray.filter(currentCriminal => currentCriminal.incarceration.end <= selectedEndDate)
 
                     const message = new CustomEvent("filterInitiated", {
                         detail: {
-                            filteredArray: filteredByofficerArray
+                            filteredArray: finalFilteredArray
                         }
                     })
                     eventHub.dispatchEvent(message);
                 } else if (selectedOfficer === "0" || selectedCrime === "0") {
                     const unfilteredArray = useCriminals();
+                    const filteredByStartDateArray = unfilteredArray.filter(currentCriminal => currentCriminal.incarceration.end >= selectedStartDate)
+                    const finalFilteredArray = filteredByStartDateArray.filter(currentCriminal => currentCriminal.incarceration.end <= selectedEndDate)
 
                     const message = new CustomEvent("filterInitiated", {
                         detail: {
-                            filteredArray: unfilteredArray,
+                            filteredArray: finalFilteredArray,
                         }
                     })
                     eventHub.dispatchEvent(message);
@@ -70,10 +81,12 @@ export const FilterComponent = () => {
                 const unfilteredArray = useCriminals();
                 const filteredByConvictionsArray = unfilteredArray.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
                 const filteredByBothArray = filteredByConvictionsArray.filter(currentCriminal => currentCriminal.arrestingOfficer === selectedOfficer)
+                const filteredByStartDateArray = filteredByBothArray.filter(currentCriminal => currentCriminal.incarceration.end >= selectedStartDate)
+                const finalFilteredArray = filteredByStartDateArray.filter(currentCriminal => currentCriminal.incarceration.end <= selectedEndDate)
 
                 const message = new CustomEvent("filterInitiated", {
                     detail: {
-                        filteredArray: filteredByBothArray,
+                        filteredArray: finalFilteredArray,
                     }
                 })
                 eventHub.dispatchEvent(message);
