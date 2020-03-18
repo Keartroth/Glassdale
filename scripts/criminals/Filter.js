@@ -10,6 +10,8 @@ const filtersContentTargetElement = document.querySelector(".filter__button");
 
 let selectedOfficer = "0";
 let selectedCrime = "0";
+let selectedStartDate = "1982-04-20";
+let selectedEndDate = "2029-01-02";
 
 // Inserts a button, Filter, onto the DOM in the header element (.filters).
 export const filterListButton = () => {
@@ -31,16 +33,26 @@ export const FilterComponent = () => {
         selectedCrime = event.detail.key;
     })
 
+    eventHub.addEventListener("incarcerationDateChosenDetailEvent", event => {
+        selectedStartDate = event.detail.incarcerationStart;
+        selectedEndDate = event.detail.incarcerationEnd;
+    })
+
     headerConentTargetElement.addEventListener("click", clickEvent => {
         if (clickEvent.target.id === "filterButton") {
             if (selectedOfficer === "0" || selectedCrime === "0") {
                 if (selectedOfficer === "0" && selectedCrime !== "0") {
                     const unfilteredArray = useCriminals();
                     const filteredByConvictionArray = unfilteredArray.filter(currentCriminal => currentCriminal.conviction === selectedCrime)
+                    const finalFilteredArray = filteredByConvictionArray.filter((currentCriminal) => {
+                        currentCriminal.incarceration.start === selectedStartDate;
+                        currentCriminal.incarceration.end === selectedEndDate;
+
+                    })
 
                     const message = new CustomEvent("filterInitiated", {
                         detail: {
-                            filteredArray: filteredByConvictionArray
+                            filteredArray: finalFilteredArray
                         }
                     })
                     eventHub.dispatchEvent(message);

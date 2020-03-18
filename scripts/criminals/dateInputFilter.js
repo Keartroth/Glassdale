@@ -10,9 +10,9 @@ const targetHeaderContentElement = document.querySelector(".filters__incarcerati
 export const dateInputFilter = () => {
     targetHeaderContentElement.innerHTML =`
     <label for="filter--startDate">Incarceration Start</label>
-    <input type="date" id="filter--startDate">
+    <input type="date" id="filter--startDate" min="1982-04-20" required>
     <label for="filter--endDate">Incarceration End</label>
-    <input type="date" id="filter--endDate">
+    <input type="date" id="filter--endDate" max="2029-01-02" required>
     `;
     
     const targetFilterStartDateElement = document.querySelector("#filter--startDate");
@@ -31,7 +31,7 @@ targetHeaderContentElement.addEventListener(
         if (event.target.id.startsWith("filter--")) {
             const incarcerationStartAndEndDateArray = document.querySelectorAll("input#filter--startDate, input#filter--endDate");
             const incarcerationStartDate = incarcerationStartAndEndDateArray[0].value;
-            const incarcerationEndDate = startAndEndDateArray[1].value;
+            const incarcerationEndDate = incarcerationStartAndEndDateArray[1].value;
             const incarcerationStartDateFormat = new Date(incarcerationStartDate).toLocaleDateString('ja-JP');
             const incarcerationEndDateFormat = new Date(incarcerationEndDate).toLocaleDateString('ja-JP');
             const incarcerationDateChosen = new CustomEvent("incarcerationDateChosenDetailEvent", {
