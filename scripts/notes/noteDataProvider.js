@@ -1,4 +1,5 @@
 import { noteRender } from "./NoteList.js";
+import { resetNoteForm } from "./NoteForm.js";
 
 /*
  *   noteDataProvider module that fetches an array of note objects, fills the array, notes,
@@ -36,6 +37,7 @@ export const saveNote = note => {
         body: JSON.stringify(note)
     })
     .then(getNotes)
+    .then(resetNoteForm)
     .then(dispatchStateChangeEvent);
 }
 

@@ -22,7 +22,7 @@ export const criminal = (criminalObject) => {
 
             </div>
 
-            <button id="hideCriminal--${criminalObject.id}">Remove Note From List</button>
+            <button id="hideCriminal--${criminalObject.id}">Remove Criminal From List</button>
     </div>
     `
 }

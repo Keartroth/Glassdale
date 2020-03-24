@@ -1,5 +1,5 @@
 import { saveNote } from "./noteDataProvider.js";
-import { useCriminals, findCriminalID } from "../criminals/criminalDataProvider.js";
+import { useCriminals } from "../criminals/criminalDataProvider.js";
 /*
 *   NoteForm component which exports the functions, noteRender & NoteForm, that renders HTML elements
 *   giving structure to note elements when looped through an array of note objects.
@@ -13,13 +13,24 @@ let visibility = false;
  *  when called by the function NoteForm.
  */
 export const noteRender = () => {
-    contentTargetElement.classList.add("hidden")
+    contentTargetElement.classList.add("hidden");
+    const arrayOfCriminalObjects = useCriminals();
+
     contentTargetElement.innerHTML = `
     <form id="noteForm">
         <label for="note--date">Date:</label>
         <input type="date" id="note--date"></br>
         <label for="note--suspect">Suspect:</label>
-        <input type="text" id="note--suspect"></br>
+        <select id="note--suspect">
+            <option value="0">Please Choose a Criminal...</option>
+            ${
+                arrayOfCriminalObjects.map(
+                    (currentCriminalObject) => {
+                        return `<option value="${currentCriminalObject.id}">${currentCriminalObject.name}</option>`
+                    }
+                ).join("")
+            }
+        </select></br>
         <label for="note--text">Note:</label></br>
         <textarea id="note--text"></textarea></br>
 
@@ -32,23 +43,26 @@ export const noteRender = () => {
 export const NoteForm = () => {
     noteRender()
 }
+
+// Function that resets the form, #noteForm, when invoked.
+export const resetNoteForm = () => {
+    const noteFormTarget = document.getElementById("noteForm");
+    noteFormTarget.reset();
+}
 /*
  *  Adds a "click" event listener to the button element (#saveNote) that collects the user entered data 
  *  of the form element (#noteForm) and runs the function saveNote to submit the data. 
 */
 contentTargetElement.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
-        const criminals = useCriminals();
         const contentTargetDate = document.getElementById("note--date").value;
-        const contentTargetSuspect = document.getElementById("note--suspect").value;
+        const CriminalId = document.getElementById("note--suspect").value;
         const contentTargetNoteText = document.getElementById("note--text").value;
-        const relatedCriminalId = findCriminalID(criminals, contentTargetSuspect);
 
         const newNote = {
             "date": contentTargetDate,
-            "suspect": contentTargetSuspect,
             "noteText": contentTargetNoteText,
-            "criminalId": relatedCriminalId
+            "criminalId": parseInt(CriminalId)
         }
         saveNote(newNote)
     }
