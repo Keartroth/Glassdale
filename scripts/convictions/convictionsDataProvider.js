@@ -8,6 +8,14 @@ let convictions = [];
 
 // Returns a copy of the array convictions to be used later.
 export const useConvictions = () => {
+    convictions.sort(
+        (currentObject, nextObject) => {
+            
+            if (currentObject.name < nextObject.name) { return -1; }
+            if (currentObject.name > nextObject.name) { return 1; }
+            return 0;
+        }
+    )
     return convictions.slice();
 }
 

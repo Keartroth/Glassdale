@@ -13,6 +13,7 @@ import { criminalListButton } from "./criminals/CriminalListButton.js";
 import { DisplayNoteFormButton } from "./notes/NoteFormButton.js";
 import "./witnesses/WitnessList.js";
 import { dateInputFilter } from "./criminals/dateInputFilter.js";
+import { noteList } from "./notes/NoteList.js";
 
 DisplayNoteFormButton();
 noteListButton();
@@ -24,12 +25,13 @@ filterListButton();
 getWitnesses();
 getCriminals()
     .then(criminalList)
-    .then(NoteForm);
+    .then(NoteForm)
+    .then(noteList);
 
 getConvictions()
     .then(ConvictionSelect);
 
 getOfficers()
     .then(OfficerSelect);
-    
+
 FilterComponent();

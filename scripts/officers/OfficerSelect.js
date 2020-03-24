@@ -18,7 +18,7 @@ export const officerRender = officersCollection => {
             ${
                 officersCollection.map(officer => {
                        return `<option id="officerId--${officer.id}" value="${officer.name}" class="officersMenueItem">${officer.name}</option>`
-                   })
+                   }).join("")
                }
         </select>
     `;

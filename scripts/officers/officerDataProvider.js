@@ -8,6 +8,16 @@ let officers = [];
 
 // Returns a copy of the array officers to be used later.
 export const useOfficers = () => {
+    officers.sort(
+        (currentObject, nextObject) => {
+            const [currentObjectFirstName, currentObjectLastName] = currentObject.name.split(" ");
+            const [nextObjectFirstName, nextObjectLastName] = nextObject.name.split(" ");
+
+            if (currentObjectLastName < nextObjectLastName) { return -1; }
+            if (currentObjectLastName > nextObjectLastName) { return 1; }
+            return 0;
+        }
+    )
     return officers.slice();
 }
 

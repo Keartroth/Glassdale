@@ -46,15 +46,13 @@ notesContainerContentTargetElement.addEventListener(
         if (theEditEvent.target.id.startsWith("editNoteSubmit--")) {
             const [prefix, editedNoteId, editedCriminalNoteId] = theEditEvent.target.id.split('--');
             const contentTargetDate = document.getElementById(`note--date--edit--${editedNoteId}`).value;
-            const contentTargetSuspect = document.getElementById(`note--suspect--edit--${editedNoteId}`).value;
             const contentTargetNoteText = document.getElementById(`note--text--edit--${editedNoteId}`).value;
 
             const editedNoteObject = {
                 "date": contentTargetDate,
-                "suspect": contentTargetSuspect,
                 "noteText": contentTargetNoteText,
-                "criminalId": editedCriminalNoteId,
-                "id": editedNoteId
+                "criminalId": parseInt(editedCriminalNoteId),
+                "id": parseInt(editedNoteId)
             }
 
             const theEditNoteEvent = new CustomEvent("editNoteEvent", {

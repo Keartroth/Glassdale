@@ -1,4 +1,12 @@
 /* CSS file for the form element (.note) in the section (.notesContainer). */
+
+#button--listAllNotes {
+    display: block;
+    font-family: monospace;
+    margin: 20px auto;
+    padding: 1em;
+}
+
 #button--noteList {
     font-family: monospace;
     margin: auto;

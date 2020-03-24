@@ -1,4 +1,4 @@
-import { noteRender } from "./NoteList.js";
+import { noteList } from "./NoteList.js";
 import { resetNoteForm } from "./NoteForm.js";
 
 /*
@@ -70,7 +70,7 @@ eventHub.addEventListener("deleteNoteEvent", theDeleEvent => {
     deleteNote(theDeleEvent.detail.note).then(
         () => {
             const updatedNotes = useNotes();
-            noteRender(updatedNotes);
+            noteList(updatedNotes);
         }
     )
 })

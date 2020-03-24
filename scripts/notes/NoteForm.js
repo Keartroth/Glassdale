@@ -1,7 +1,7 @@
 import { saveNote } from "./noteDataProvider.js";
 import { useCriminals } from "../criminals/criminalDataProvider.js";
 /*
-*   NoteForm component which exports the functions, noteRender & NoteForm, that renders HTML elements
+*   NoteForm component which exports the functions, noteFormRender & NoteForm, that renders HTML elements
 *   giving structure to note elements when looped through an array of note objects.
 */
 const eventHub = document.querySelector(".container");
@@ -12,7 +12,7 @@ let visibility = false;
  *  Structure for a form element (#noteForm) to be inserted to the DOM at (.noteFormContainer), 
  *  when called by the function NoteForm.
  */
-export const noteRender = () => {
+export const noteFormRender = () => {
     contentTargetElement.classList.add("hidden");
     const arrayOfCriminalObjects = useCriminals();
 
@@ -41,7 +41,7 @@ export const noteRender = () => {
 
 // Renders a form to the DOM in the article element (.noteFormContainer) that is used to submit case notes.
 export const NoteForm = () => {
-    noteRender()
+    noteFormRender()
 }
 
 // Function that resets the form, #noteForm, when invoked.
