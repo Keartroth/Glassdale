@@ -20,9 +20,16 @@ witnessListButton();
 criminalListButton();
 dateInputFilter();
 filterListButton();
-NoteForm();
+
 getWitnesses();
-getCriminals().then(criminalList);
-getConvictions().then(ConvictionSelect);
-getOfficers().then(OfficerSelect);
+getCriminals()
+    .then(criminalList)
+    .then(NoteForm);
+
+getConvictions()
+    .then(ConvictionSelect);
+
+getOfficers()
+    .then(OfficerSelect);
+    
 FilterComponent();

@@ -2,94 +2,75 @@
   "notes": [
     {
       "date": "2020-03-17",
-      "suspect": "Hilario Leuschke",
       "noteText": "I accused Hilario, and he was not the culprit.",
-      "criminalId": "9001",
+      "criminalId": 78,
+      "id": 1
+    },
+    {
+      "date": "2020-03-18",
+      "noteText": "Ubaldo was released from prison on, 2010/3/29, and has a history of committing similar crimes, Extortion. He is the second most likely suspect.",
+      "criminalId": 100,
       "id": 2
     },
     {
-      "date": "2020-03-17",
-      "suspect": "Margaret Debrowski",
-      "noteText": "Maggie has been in a poor mood since I have begun the case. She was intimately aware of the individuals that were targeted and why some were not targeted repeatedly. She drives a pickup truck and uses the word quickly.",
-      "criminalId": "89",
+      "date": "2020-03-18",
+      "noteText": "Jordane was released from prison on, 2008/9/13, and has a history of committing similar crimes, Burglary. He is the next most likely suspect. He also only has one alibi of cleaning his fireplace.",
+      "criminalId": 5,
       "id": 3
     },
     {
       "date": "2020-03-18",
-      "suspect": "Ubaldo Doyle",
-      "noteText": "Ubaldo was released from prison on,2010/3/29, and has a history of committing similar crimes, Extortion. He is the second most likely suspect.",
-      "criminalId": 100,
+      "noteText": "Adah was released from prison on, 2005/11/6, and has a history of committing similar crimes, Burglary. She is the next most likely suspect. Also has a history of drug abuse, \"watching the pink and purple elephants fly.\"",
+      "criminalId": 61,
       "id": 4
     },
     {
       "date": "2020-03-18",
-      "suspect": "Jordane West",
-      "noteText": "Jordane was released from prison on, 2008/9/13, and has a history of committing similar crimes, Burglary. He is the next most likely suspect. He also only has one alibi of cleaning his fireplace.",
-      "criminalId": "5",
+      "noteText": "Michel was released from prison on, 2013/11/21, and has a history of committing similar crimes, Grand Theft. He is the next most likely suspect.",
+      "criminalId": 4,
       "id": 5
     },
     {
       "date": "2020-03-18",
-      "suspect": "Adah Rolfson",
-      "noteText": "Adah was released from prison on, 2005/11/6, and has a history of committing similar crimes, Burglary. She is the next most likely suspect. Also has a history of drug abuse, \"watching the pink and purple elephants fly.\"",
-      "criminalId": 61,
+      "noteText": "Emerson was released from prison on, 2010/5/9, and has a history of committing similar crimes, Grand Theft. He is the next most likely suspect.",
+      "criminalId": 24,
       "id": 6
     },
     {
       "date": "2020-03-18",
-      "suspect": "Michel Stamm",
-      "noteText": "Michel was released from prison on, 2013/11/21, and has a history of committing similar crimes, Grand Theft. He is the next most likely suspect.",
-      "criminalId": "4",
+      "noteText": "Nathanael was released from prison on, 2013/6/20, and has a history of committing similar crimes, Theft. He is the next most likely suspect.",
+      "criminalId": 3,
       "id": 7
     },
     {
       "date": "2020-03-18",
-      "suspect": "Emerson Hintz",
-      "noteText": "Emerson was released from prison on, 2010/5/9, and has a history of committing similar crimes, Grand Theft. He is the next most likely suspect.",
-      "criminalId": 24,
+      "noteText": "Gavin was released from prison on, 2009/1/24, and has a history of committing similar crimes, Theft. He is the next most likely suspect.",
+      "criminalId": 51,
       "id": 8
     },
     {
       "date": "2020-03-18",
-      "suspect": "Nathanael Champlin",
-      "noteText": "Nathanael was released from prison on, 2013/6/20, and has a history of committing similar crimes, Theft. He is the next most likely suspect.",
-      "criminalId": 3,
+      "noteText": "Kieran was released from prison on, 2015/7/25, and has a history of committing similar crimes, Grand Theft. Only has one alibi, cooking dinner. She is the next most likely suspect.",
+      "criminalId": 41,
       "id": 9
     },
     {
       "date": "2020-03-18",
-      "suspect": "Gavin Nienow",
-      "noteText": "Gavin was released from prison on, 2009/1/24, and has a history of committing similar crimes, Theft. He is the next most likely suspect.",
-      "criminalId": 51,
+      "noteText": "Madelyn was released from prison on, 2013/8/15, and has a history of committing similar crimes, Grand Theft. Only has one alibi, Getting married. She is the next most likely suspect.",
+      "criminalId": 1,
       "id": 10
     },
     {
       "date": "2020-03-18",
-      "suspect": "Kieran Mayert",
-      "noteText": "Kieran was released from prison on, 2015/7/25, and has a history of committing similar crimes, Grand Theft. Only has one alibi, cooking dinner. She is the next most likely suspect.",
-      "criminalId": "41",
+      "noteText": "Louisa was released from prison on, 2008/10/12, and has a history of committing similar crimes, Grand Theft. Only has one alibi, Listening To Heavy Metal. She is the next most likely suspect.",
+      "criminalId": 46,
       "id": 11
     },
     {
       "date": "2020-03-18",
-      "suspect": "Madelyn Lebsack",
-      "noteText": "Madelyn was released from prison on, 2013/8/15, and has a history of committing similar crimes, Grand Theft. Only has one alibi, Getting married. She is the next most likely suspect.",
-      "criminalId": 1,
-      "id": 12
-    },
-    {
-      "date": "2020-03-18",
-      "suspect": "Louisa Stroman",
-      "noteText": "Louisa was released from prison on, 2008/10/12, and has a history of committing similar crimes, Grand Theft. Only has one alibi, Listening To Heavy Metal. She is the next most likely suspect.",
-      "criminalId": 46,
-      "id": 13
-    },
-    {
-      "date": "2020-03-18",
-      "suspect": "Sabrina Lubowitz",
       "noteText": "Louisa was released from prison on, 2002/1/1, and has a history of committing similar crimes, Theft. She is the next most likely suspect.",
       "criminalId": 91,
-      "id": 14
+      "id": 12
     }
   ]
 }
