@@ -8,10 +8,10 @@ const notesContainerContentTargetElement = document.querySelector(".notesContain
 *   Exports the function, NoteComponent, that accepts an argument, 
 *   noteObject, and returns a string of an HTML note element.
 */
-export const NoteComponent = (noteObject) => {
+export const NoteComponent = (noteObject, criminalObject) => {
     return`
     <section class="note" id="note--${noteObject.id}">
-        <h4 class="note__suspect"><span class="bold">Suspect</span>: ${noteObject.suspect}</h4>
+        <h4 class="note__suspect"><span class="bold">Suspect</span>: ${criminalObject.name}</h4>
         <p class="note__timestamp"><span class="bold">Note Entry Date</span>: ${noteObject.date}</p>
         <p class="note__text">${noteObject.noteText}</p>
 

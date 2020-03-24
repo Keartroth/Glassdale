@@ -8,6 +8,17 @@ let criminals = [];
 
 // Returns a copy of the array criminals to be used later.
 export const useCriminals = () => {
+    criminals.sort(
+        (currentObject, nextObject) => {
+            const [currentObjectFirstName, currentObjectLastName] = currentObject.name.split(" ");
+            const [nextObjectFirstName, nextObjectLastName] = nextObject.name.split(" ");
+
+            if (currentObjectLastName < nextObjectLastName) { return -1; }
+            if (currentObjectLastName > nextObjectLastName) { return 1; }
+            return 0;
+        }
+    )
+
     return criminals.slice();
 }
 

@@ -13,15 +13,15 @@ let selectedCrime = "0";
 let selectedStartDate = "1982-04-20";
 let selectedEndDate = "2029-01-03";
 
-// Inserts a button, Filter, onto the DOM in the header element (.filters).
+// Inserts a button, Filter by Selected Values, onto the DOM in the header element (.filters).
 export const filterListButton = () => {
     filtersContentTargetElement.innerHTML += `
     <button id="filterButton">Filter by Selected Values</button>
     `
 }
 /*
- *   FilterComponent function that sets three event listeners which capture the values of the custom events, 
- *   officerSelectedDetailEvent & crimeSelectedDetailEvent, filter useCriminals with each value and return an array of criminal objects.
+ *   FilterComponent function that sets three event listeners which capture the values of the custom events
+ *   to filter useCriminals with each value and return an array of criminal objects dispatch in, filterInitiated.
  */
 export const FilterComponent = () => {
 
