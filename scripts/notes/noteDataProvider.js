@@ -67,12 +67,7 @@ export const editNote = (note) => {
 *   deleteNote, and then sets an updated array to render the note list again.
 */
 eventHub.addEventListener("deleteNoteEvent", theDeleEvent => {
-    deleteNote(theDeleEvent.detail.note).then(
-        () => {
-            const updatedNotes = useNotes();
-            noteList(updatedNotes);
-        }
-    )
+    deleteNote(theDeleEvent.detail.note)
 })
 
 // Listens for the custom event "editNoteEvent" which invokes the function editNote.

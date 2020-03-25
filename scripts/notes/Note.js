@@ -9,9 +9,10 @@ const notesContainerContentTargetElement = document.querySelector(".notesContain
 *   noteObject, and returns a string of an HTML note element.
 */
 export const NoteComponent = (noteObject, criminalObject) => {
+    const [firstName, lastName] = criminalObject.name.split(" ");
     return`
     <section class="note" id="note--${noteObject.id}">
-        <h4 class="note__suspect"><span class="bold">Suspect</span>: ${criminalObject.name}</h4>
+        <h4 class="note__suspect"><span class="bold">Suspect</span>: ${lastName}, ${firstName}</h4>
         <p class="note__timestamp"><span class="bold">Note Entry Date</span>: ${noteObject.date}</p>
         <p class="note__text">${noteObject.noteText}</p>
 
@@ -19,7 +20,7 @@ export const NoteComponent = (noteObject, criminalObject) => {
         
         <button id="deleteNote--${noteObject.id}" class="deleteNoteButton">Delete Note</button>
 
-        <button id="editNote--${noteObject.id}" class="editNoteButton">Edit Note</button>
+        <button id="editNote--${noteObject.id}--criminal--${criminalObject.id}" class="editNoteButton">Edit Note</button>
     </section>
     `
 }
@@ -56,12 +57,13 @@ notesContainerContentTargetElement.addEventListener(
     event => {
     if (event.target.id.startsWith("editNote--")) {
         const noteDateUnsplit = event.target.parentElement.querySelector(".note__timestamp").innerText;
-        const [dateprefix, noteDate] = noteDateUnsplit.split(": ")
-        const [prefix, chosenNote] = event.target.id.split("--");
+        const [dateprefix, noteDate] = noteDateUnsplit.split(": ");
+        const [prefix, chosenNote, criminalPrefix, criminalId] = event.target.id.split("--");
         const openDialogBox = new CustomEvent("editDialogButtonDetailEvent", {
             detail: {
                 note: chosenNote,
-                date: noteDate
+                date: noteDate,
+                criminal: criminalId
             }
         })
         eventHub.dispatchEvent(openDialogBox);
