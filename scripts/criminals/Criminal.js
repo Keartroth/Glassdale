@@ -7,9 +7,10 @@ const targetListContainerContentElement = document.querySelector(".listContainer
 
 // Function, criminal, that accepts an argument, criminalObject, and returns a string of an HTML element.
 export const criminal = (criminalObject) => {
+    const [firstName, lastName] = criminalObject.name.split(" ");
     return`
     <div id="criminalCard--${criminalObject.id}" class="criminal">
-        <h4 id="criminal__name"><span class="bold">Name</span>: ${criminalObject.name}</h4>
+        <h4 id="criminal__name"><span class="bold">Name</span>: ${lastName}, ${firstName}</h4>
         <div id="criminal__information--${criminalObject.id}" class="criminal__information">
             <p class="information--age"><span class="bold">Age</span>: ${criminalObject.age}</p>
             <p class="information--crime"><span class="bold">Crime</span>: ${criminalObject.conviction}</p>

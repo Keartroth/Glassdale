@@ -26,7 +26,8 @@ export const noteFormRender = () => {
             ${
                 arrayOfCriminalObjects.map(
                     (currentCriminalObject) => {
-                        return `<option value="${currentCriminalObject.id}">${currentCriminalObject.name}</option>`
+                        const [firstName, lastName] = currentCriminalObject.name.split(" ");
+                        return `<option value="${currentCriminalObject.id}">${lastName}, ${firstName}</option>`
                     }
                 ).join("")
             }
